@@ -4,7 +4,7 @@ import './Settings.scss'
 const Settings = () => {
     return (
         <div>
-            <h1>Settings</h1>
+            <h1 className='title pb-2 border-bottom'>Settings</h1>
         </div>
     )
 }
