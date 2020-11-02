@@ -1,14 +1,27 @@
 import React from "react";
 import './Navbar.scss'
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     return(
-        <nav className='success shadow rounded'>
-            <li><a href="/">Profile</a></li>
-            <li><a href="/">Message</a></li>
-            <li><a href="/">News</a></li>
-            <li><a href="/">Music</a></li>
-            <li><a href="/">Settings</a></li>
+        <nav className='navigation shadow rounded'>
+            <ul>
+                <li>
+                    <NavLink to="/profile">Profile</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/dialogs">Message</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/news">News</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/music">Music</NavLink>
+                </li>
+                <li className='pt-4'>
+                    <NavLink to="/settings">Settings</NavLink>
+                </li>
+            </ul>
         </nav>
     )
 }

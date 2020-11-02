@@ -1,4 +1,4 @@
-nav {
+.navigation {
   padding: 30px;
   background: lawngreen;
   flex-basis: 25%;
@@ -13,6 +13,9 @@ nav {
       &:hover {
         text-decoration: none;
         opacity: .7;
+      }
+      &.active {
+        color: royalblue;
       }
     }
   }

@@ -11,8 +11,9 @@ const MyPosts = () => {
                 <textarea className="form-control" placeholder="Add New Post"/>
                 <button className='btn btn-success'>Add Post</button>
             </div>
-            <div className="posts-output">
-                <Post/>
+            <div className="posts-output pt-3">
+                <Post message="Hi" like='15'/>
+                <Post message="I'm fine" like='20'/>
             </div>
         </div>
     )

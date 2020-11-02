@@ -3,3 +3,9 @@ img {
   height: 100%;
   object-fit: cover;
 }
+
+.main-content {
+  flex-basis: 73%;
+  max-width: 73%;
+  padding: 20px;
+}
