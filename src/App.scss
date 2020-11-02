@@ -8,4 +8,29 @@ img {
   flex-basis: 73%;
   max-width: 73%;
   padding: 20px;
+  > div {
+    max-height: calc(100vh - 120px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #52b788;
+  border-radius: 2px;
 }
