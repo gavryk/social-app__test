@@ -1,0 +1,9 @@
+.dialog__block {
+  .dialogs {
+    .dialog {
+      &.active {
+        color: #52b788;
+      }
+    }
+  }
+}

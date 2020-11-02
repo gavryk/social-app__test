@@ -1,6 +1,6 @@
 .navigation {
   padding: 30px;
-  background: lawngreen;
+  background: linear-gradient(135deg, #4f5261 0%, #383a45 50%);
   flex-basis: 25%;
   max-width: 25%;
   li {
@@ -15,7 +15,7 @@
         opacity: .7;
       }
       &.active {
-        color: royalblue;
+        color: #52b788;
       }
     }
   }
