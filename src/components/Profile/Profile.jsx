@@ -2,13 +2,12 @@ import React from "react";
 import './Profile.scss'
 
 import MyPosts from "./MyPosts/MyPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = () => {
     return(
         <div className='profile__block'>
-            <div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT2cGUqGnCYT6DxUTYNd8hqbRLcDCZ9c6TsEw&usqp=CAU" alt=""/>
-            </div>
+            <ProfileInfo/>
             <MyPosts/>
         </div>
     )

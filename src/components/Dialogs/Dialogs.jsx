@@ -2,42 +2,39 @@ import React from "react";
 import './Dialogs.scss'
 import {NavLink} from "react-router-dom";
 
+const DialogItem = (props) => {
+    let path = '/dialogs/' + props.id;
+
+    return (
+        <div className="dialog">
+            <NavLink to={ path }>{ props.name }</NavLink>
+        </div>
+    )
+}
+
+const Message = (props) => {
+    return (
+        <div className="message">
+            <p>{ props.message }</p>
+        </div>
+    )
+}
+
 const Dialogs = () => {
     return (
         <div className='dialog__block'>
             <h1 className='title pb-2 border-bottom'>Dialogs</h1>
             <div className="row">
                 <div className="dialogs col-4 border-right p-3">
-                    <div className="dialog">
-                        <NavLink to='/dialogs/1'>Oleg</NavLink>
-                    </div>
-                    <div className="dialog active">
-                        <NavLink to='/dialogs/2'>John</NavLink>
-                    </div>
-                    <div className="dialog">
-                        <NavLink to='/dialogs/3'>Olena</NavLink>
-                    </div>
-                    <div className="dialog">
-                        <NavLink to='/dialogs/4'>Max</NavLink>
-                    </div>
-                    <div className="dialog">
-                        <NavLink to='/dialogs/5'>Misha</NavLink>
-                    </div>
-                    <div className="dialog">
-                        <NavLink to='/dialogs/6'>Igor</NavLink>
-                    </div>
-
+                    <DialogItem name='Oleg' id='1'/>
+                    <DialogItem name='John' id='2'/>
+                    <DialogItem name='Olena' id='3'/>
+                    <DialogItem name='Misha' id='4'/>
                 </div>
                 <div className="messages col-8 p-3">
-                    <div className="message">
-                        <p>Hi</p>
-                    </div>
-                    <div className="message">
-                        <p>What's your name?</p>
-                    </div>
-                    <div className="message">
-                        <p>Where are you?</p>
-                    </div>
+                    <Message message='Hi' />
+                    <Message message="What's your name?" />
+                    <Message message='Where are you?' />
                 </div>
             </div>
         </div>
