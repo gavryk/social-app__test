@@ -1,6 +1,30 @@
 .dialog__block {
   .dialogs {
     .dialog {
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 22px;
+        color: #000;
+        transition: all .2s ease-in-out;
+        padding: 5px;
+        i {
+          color: #fff;
+          transition: all .3s ease-in-out;
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        &:hover {
+          text-decoration: none;
+          color: #fff;
+          background: #52b788;
+          i {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      }
       &.active {
         color: #52b788;
       }
