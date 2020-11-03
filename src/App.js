@@ -17,7 +17,7 @@ import Settings from "./components/Settings/Settings";
 const App = () => {
     return (
         <Router>
-            <div className='app-wrapper container'>
+            <div className='app-wrapper container-md'>
                 <div className="row justify-content-between">
                     <Header/>
                     <Navbar/>

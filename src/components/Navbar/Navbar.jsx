@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     return(
-        <nav className='navigation shadow rounded'>
-            <ul>
+        <nav className='navigation shadow rounded d-none d-md-block'>
+            <ul className='p-0'>
                 <li>
                     <NavLink to="/profile">Profile</NavLink>
                 </li>
