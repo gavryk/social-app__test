@@ -1,6 +1,8 @@
+@import '../../vars';
+
 header {
   padding: 10px;
-  background: #52b788;
+  background: $color;
   .logo img {
     max-width: 100px;
   }

@@ -1,3 +1,5 @@
+@import '../../../vars';
+
 .dialogs {
   .dialog {
     a {
@@ -17,7 +19,7 @@
       &:hover {
         text-decoration: none;
         color: #fff;
-        background: #52b788;
+        background: $color;
         i {
           opacity: 1;
           transform: translateX(0);
@@ -25,7 +27,7 @@
       }
     }
     &.active {
-      color: #52b788;
+      color: $color;
     }
   }
 }

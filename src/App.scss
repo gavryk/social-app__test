@@ -1,3 +1,7 @@
+//Vars
+@import './vars.scss';
+
+
 img {
   width: 100%;
   height: 100%;
@@ -35,6 +39,6 @@ html {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #52b788;
+  background: $color;
   border-radius: 2px;
 }

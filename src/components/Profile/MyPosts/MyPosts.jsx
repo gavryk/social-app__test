@@ -3,17 +3,9 @@ import React from "react";
 import './MyPosts.scss'
 import Post from "./Post/Post";
 
-const MyPosts = () => {
+const MyPosts = (props) => {
 
-    let postData = [
-        {id: 1, message: 'Hi', like: 15},
-        {id: 2, message: 'What"s your name?', like: 20},
-        {id: 3, message: 'Yo', like: 35},
-        {id: 4, message: 'Hello', like: 150},
-        {id: 5, message: 'What?', like: 154}
-    ]
-
-    let posts = postData.map((post) => {
+    let posts = props.posts.map((post) => {
         return <Post message={post.message} like={post.like}/>
     })
 

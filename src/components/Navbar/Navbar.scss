@@ -1,3 +1,5 @@
+@import '../../vars';
+
 .navigation {
   padding: 30px;
   background: linear-gradient(135deg, #4f5261 0%, #383a45 50%);
@@ -15,7 +17,7 @@
         opacity: .7;
       }
       &.active {
-        color: #52b788;
+        color: $color;
       }
     }
   }

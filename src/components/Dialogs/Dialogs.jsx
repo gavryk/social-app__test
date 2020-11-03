@@ -4,29 +4,13 @@ import DialogItem from "./Dialog/Dialog";
 import Message from "./Message/Message";
 
 
-const Dialogs = () => {
+const Dialogs = (props) => {
 
-    let dialogsData = [
-        {id: 1, name: 'Oleg'},
-        {id: 2, name: 'Olena'},
-        {id: 3, name: 'Ivan'},
-        {id: 4, name: 'Max'},
-        {id: 5, name: 'John'}
-    ];
-
-    let messagesData = [
-        {id: 1, message: 'Hi'},
-        {id: 2, message: 'What"s your name?'},
-        {id: 3, message: 'Yo'},
-        {id: 4, message: 'Hello'},
-        {id: 5, message: 'What?'}
-    ]
-
-    let dialogs = dialogsData.map((dialog) => {
+    let dialogs = props.state.dialogs.map((dialog) => {
         return <DialogItem name={dialog.name} id={dialog.id} />
     })
 
-    let messages = messagesData.map((message) => {
+    let messages = props.state.messages.map((message) => {
         return <Message message={message.message} />
     })
 
@@ -35,10 +19,10 @@ const Dialogs = () => {
             <h1 className='title pb-2 border-bottom'>Dialogs</h1>
             <div className="row">
                 <div className="dialogs col-4 border-right p-3">
-                    {dialogs}
+                    { dialogs }
                 </div>
                 <div className="messages col-8 p-3">
-                    {messages}
+                    { messages }
                 </div>
             </div>
         </div>

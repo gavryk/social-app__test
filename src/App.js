@@ -14,7 +14,8 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
 
-const App = () => {
+const App = (props) => {
+
     return (
         <Router>
             <div className='app-wrapper container-md'>
@@ -23,11 +24,9 @@ const App = () => {
                     <Navbar/>
                     <div className="main-content shadow rounded">
                         <Switch>
-                            <Route path='/profile'>
-                                <Profile />
-                            </Route>
+                            <Route path='/profile' render={ () => <Profile state={ props.appState.profilePage } /> }/>
                             <Route path='/dialogs'>
-                                <Dialogs />
+                                <Dialogs state={ props.appState.messagesPage } />
                             </Route>
                             <Route path='/news'>
                                 <News />
