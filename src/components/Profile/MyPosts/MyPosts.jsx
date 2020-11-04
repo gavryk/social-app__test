@@ -9,12 +9,18 @@ const MyPosts = (props) => {
         return <Post message={post.message} like={post.like}/>
     })
 
+    let newPostEl = React.createRef()
+
+    let addPost = () => {
+        alert(newPostEl.current.value);
+    }
+
     return(
         <div className='posts__wrapper'>
             <h2>My Posts</h2>
             <div className="post-input">
-                <textarea className="form-control" placeholder="Add New Post"/>
-                <button className='btn btn-success'>Add Post</button>
+                <textarea className="form-control" placeholder="Add New Post" ref={newPostEl}/>
+                <button className='btn btn-success' onClick={ addPost }>Add Post</button>
             </div>
             <div className="posts-output pt-3">
                 { posts }
