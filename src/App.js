@@ -21,7 +21,7 @@ const App = (props) => {
                 <Navbar/>
                 <div className="main-content shadow rounded">
                     <Switch>
-                        <Route path='/profile' render={ () => <Profile state={ props.appState.profilePage } /> }/>
+                        <Route path='/profile' render={ () => <Profile state={ props.appState.profilePage } addPost={ props.addPost } /> }/>
                         <Route path='/dialogs'>
                             <Dialogs state={ props.appState.messagesPage } />
                         </Route>
