@@ -9,20 +9,22 @@ const MyPosts = (props) => {
         return <Post message={post.message} like={post.like}/>
     })
 
-    let newPostEl = React.createRef()
+    let newPostEl = React.createRef();
 
     let addPost = () => {
-        let text = newPostEl.current.value;
-        props.addPost(text);
+        props.addPost();
+    };
 
-        newPostEl.current.value = '';
-    }
+    let onPostChanges = () => {
+        let text = newPostEl.current.value;
+        props.updateNewPostText(text);
+    };
 
     return(
         <div className='posts__wrapper'>
             <h2>My Posts</h2>
             <div className="post-input">
-                <textarea className="form-control" placeholder="Add New Post" ref={newPostEl}/>
+                <textarea onChange={ onPostChanges } className="form-control" placeholder="Add New Post" ref={ newPostEl } value={props.newPostText} />
                 <button className='btn btn-success' onClick={ addPost }>Add Post</button>
             </div>
             <div className="posts-output pt-3">

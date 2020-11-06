@@ -1,5 +1,5 @@
 import * as serviceWorker from './serviceWorker';
-import { renderEntireTree } from "./scss/render";
+import { renderEntireTree } from "./render";
 import state from "./redux/state";
 
 

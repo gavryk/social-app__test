@@ -1,4 +1,4 @@
-import {renderEntireTree} from "../scss/render";
+import {renderEntireTree} from "../render";
 
 let state = {
     profilePage: {
@@ -9,6 +9,7 @@ let state = {
             {id: 4, message: 'Hello', like: 150},
             {id: 5, message: 'What?', like: 154}
         ],
+        newPostText: 'My Social App'
     },
     messagesPage: {
         dialogs: [
@@ -28,14 +29,19 @@ let state = {
     }
 };
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let post = {
         id: 5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         like: 0
     }
-
     state.profilePage.posts.push(post);
+    state.profilePage.newPostText = '';
+    renderEntireTree(state);
+}
+
+export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
     renderEntireTree(state);
 }
 
