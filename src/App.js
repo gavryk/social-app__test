@@ -13,12 +13,11 @@ import Settings from "./components/Settings/Settings";
 
 
 const App = (props) => {
-
     return (
         <div className='app-wrapper container-md'>
             <div className="row justify-content-between">
                 <Header/>
-                <Navbar/>
+                <Navbar friends={ props.state.friends } />
                 <div className="main-content shadow rounded">
                     <Switch>
                         <Route path='/profile'>

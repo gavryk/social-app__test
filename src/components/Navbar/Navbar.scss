@@ -5,20 +5,37 @@
   background: linear-gradient(135deg, #4f5261 0%, #383a45 50%);
   flex-basis: 25%;
   max-width: 25%;
-  li {
-    list-style: none;
-    a {
-      color: #fff;
-      font-size: 24px;
-      text-decoration: none;
-      transition: all .4s ease-in-out;
-      &:hover {
+  height: calc(100vh - 75px);
+  .menu-navigation {
+    li {
+      list-style: none;
+      a {
+        color: #fff;
+        font-size: 24px;
         text-decoration: none;
-        opacity: .7;
-      }
-      &.active {
-        color: $color;
+        transition: all .4s ease-in-out;
+        &:hover {
+          text-decoration: none;
+          opacity: .7;
+        }
+        &.active {
+          color: $color;
+        }
       }
     }
   }
+  .friendsList {
+    width: 100%;
+    color: #fff;
+    li {
+      list-style: none;
+      font-size: 24px;
+      .user-avatar {
+        max-width: 40px;
+        max-height: 40px;
+        border-radius: 50%;
+      }
+    }
+  }
+
 }

@@ -25,8 +25,14 @@ let state = {
             {id: 3, message: 'Yo'},
             {id: 4, message: 'Hello'},
             {id: 5, message: 'What?'}
-        ]
-    }
+        ],
+        newMessage: ''
+    },
+    friends: [
+        {id: 1, name: 'Andrew'},
+        {id: 2, name: 'John'},
+        {id: 3, name: 'Ivan'}
+    ]
 };
 
 export let addPost = () => {
@@ -44,5 +50,6 @@ export let updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
     renderEntireTree(state);
 }
+
 
 export default state;

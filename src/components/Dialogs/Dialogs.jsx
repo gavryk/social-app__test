@@ -14,6 +14,7 @@ const Dialogs = (props) => {
         return <Message message={message.message} />
     })
 
+
     return (
         <div className='dialog__block'>
             <h1 className='title pb-2 border-bottom'>Dialogs</h1>
