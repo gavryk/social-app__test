@@ -6,6 +6,8 @@
   flex-basis: 25%;
   max-width: 25%;
   height: calc(100vh - 75px);
+  overflow-y: scroll;
+  overflow-x: hidden;
   .menu-navigation {
     li {
       list-style: none;
@@ -29,10 +31,10 @@
     color: #fff;
     li {
       list-style: none;
-      font-size: 24px;
+
       .user-avatar {
-        max-width: 40px;
-        max-height: 40px;
+        max-width: 30px;
+        max-height: 30px;
         border-radius: 50%;
       }
     }

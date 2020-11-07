@@ -10,6 +10,7 @@ import { Route, Switch} from 'react-router-dom'
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import Friends from "./components/Friends/Friends";
 
 
 const App = (props) => {
@@ -24,7 +25,11 @@ const App = (props) => {
                             <Profile profilePage={ props.state.profilePage } addPost={ props.addPost } updateNewPostText={ props.updateNewPostText } />
                         </Route>
                         <Route path='/dialogs'>
-                            <Dialogs messagesPage={ props.state.messagesPage } />
+                            <Dialogs
+                                messagesPage={ props.state.messagesPage }
+                                addMsg={ props.addMsg }
+                                updateNewMsgText={ props.updateNewMsgText }
+                                newMsgText={props.state.messagesPage.newMessage}/>
                         </Route>
                         <Route path='/news'>
                             <News />
@@ -34,6 +39,9 @@ const App = (props) => {
                         </Route>
                         <Route path='/settings'>
                             <Settings />
+                        </Route>
+                        <Route path='/friends'>
+                            <Friends  friends={ props.state.friends } />
                         </Route>
                     </Switch>
                 </div>

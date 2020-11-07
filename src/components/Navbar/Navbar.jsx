@@ -1,18 +1,19 @@
 import React from "react";
 import './Navbar.scss'
 import { NavLink } from "react-router-dom";
-import userAvatar from "../../img/Post-img/user-avatar.png";
+import Friend from "../Friends/Friend/Friend";
 
 const Navbar = (props) => {
 
 
-    let friends = props.friends.map((friend) => {
-        return (
-            <li className='d-flex'>
-                <img className='user-avatar mr-2 mb-2' src={ userAvatar } alt=""/>
-                { friend.name }
-            </li>
-        )
+    let friends = props.friends.map((friend, index) => {
+        if (index <= 2) {
+            return (
+                <li className='d-flex'>
+                    <Friend friendName={ friend.name } avatar={ friend.avatar } />
+                </li>
+            )
+        }
     })
 
     return(
@@ -41,6 +42,7 @@ const Navbar = (props) => {
                 <ul className='p-0 d-flex flex-column w-100'>
                     { friends }
                 </ul>
+                <NavLink to='/friends' className='btn btn-success align-center'>View All</NavLink>
             </div>
         </div>
 
