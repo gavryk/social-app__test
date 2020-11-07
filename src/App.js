@@ -22,14 +22,14 @@ const App = (props) => {
                 <div className="main-content shadow rounded">
                     <Switch>
                         <Route path='/profile'>
-                            <Profile profilePage={ props.state.profilePage } addPost={ props.addPost } updateNewPostText={ props.updateNewPostText } />
+                            <Profile profilePage={ props.state.profilePage } dispatch={ props.dispatch } />
                         </Route>
                         <Route path='/dialogs'>
                             <Dialogs
                                 messagesPage={ props.state.messagesPage }
-                                addMsg={ props.addMsg }
-                                updateNewMsgText={ props.updateNewMsgText }
-                                newMsgText={props.state.messagesPage.newMessage}/>
+                                newMsgText={ props.state.messagesPage.newMessage }
+                                dispatch={ props.dispatch }
+                            />
                         </Route>
                         <Route path='/news'>
                             <News />

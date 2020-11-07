@@ -1,6 +1,6 @@
 import React from "react";
 import './Friend.scss'
-import userAvatar from "../../../img/Post-img/user-avatar.png";
+import userAvatar from "../../../img/user-avatar.png";
 
 const Friend = (props) => {
     return (
