@@ -4,8 +4,9 @@ import userAvatar from "../../img/user-avatar.png";
 import Friend from "./Friend/Friend";
 
 const Friends = (props) => {
-    debugger;
-    let friends = props.friends.map((friend) => {
+    let state = props.store;
+
+    let friends = state.friends.map((friend) => {
         return (
             <div className='friend col-3'>
                 <Friend friendName={ friend.name } avatar={ friend.avatar }/>

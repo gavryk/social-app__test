@@ -6,24 +6,25 @@ import { addMessageActionCreator, updateMessageActionCreator } from "../../redux
 
 
 const Dialogs = (props) => {
+    let state = props.dialogsPage;
 
-    let dialogs = props.messagesPage.dialogs.map((dialog) => {
+    let dialogs = state.dialogs.map((dialog) => {
         return <DialogItem name={dialog.name} id={dialog.id} />
     })
 
-    let messages = props.messagesPage.messages.map((message) => {
+    let messages = state.messages.map((message) => {
         return <Message message={message.message} />
     })
 
     let newMsg = React.createRef();
 
-    let addMsg = () => {
-        props.dispatch(addMessageActionCreator());
+    let onAddMsg = () => {
+        props.addMsg();
     }
 
     let onMsgChanges = (e) => {
         let text = e.target.value;
-        props.dispatch(updateMessageActionCreator(text));
+        props.updateMsgText(text);
     }
 
     return (
@@ -36,9 +37,9 @@ const Dialogs = (props) => {
                 <div className="messages col-8 p-3">
                     { messages }
                     <div className="new-message-input">
-                        <textarea onChange={ onMsgChanges } className="form-control form-control-lg h-25" ref={ newMsg } value={ props.newMsgText } />
+                        <textarea onChange={ onMsgChanges } className="form-control form-control-lg h-25" ref={ newMsg } value={ state.newMessage } />
                         <div className="btn-wrapper text-center">
-                            <button className='btn btn-success mt-2' onClick={ addMsg }>Add Message</button>
+                            <button className='btn btn-success mt-2' onClick={ onAddMsg }>Add Message</button>
                         </div>
                     </div>
                 </div>

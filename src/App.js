@@ -3,7 +3,6 @@ import './App.scss';
 import Header from "./components/Header/Header.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
-import Dialogs from "./components/Dialogs/Dialogs";
 
 import { Route, Switch} from 'react-router-dom'
 
@@ -11,25 +10,22 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
     return (
         <div className={`app-wrapper`}>
             <div className="container-md">
                 <div className="row justify-content-between">
-                    <Header themeSwitch={ props.themeSwitch }/>
-                    <Navbar friends={ props.state.friendsPage.friends } />
+                    <Header/>
+                    <Navbar store={ props.store.getState().friendsPage } />
                     <div className="main-content shadow rounded">
                         <Switch>
                             <Route path='/profile'>
-                                <Profile profilePage={ props.state.profilePage } dispatch={ props.dispatch } />
+                                <Profile store={ props.store } />
                             </Route>
                             <Route path='/dialogs'>
-                                <Dialogs
-                                    messagesPage={ props.state.messagesPage }
-                                    newMsgText={ props.state.messagesPage.newMessage }
-                                    dispatch={ props.dispatch }
-                                />
+                                <DialogsContainer store={ props.store } />
                             </Route>
                             <Route path='/news'>
                                 <News />
@@ -41,7 +37,7 @@ const App = (props) => {
                                 <Settings />
                             </Route>
                             <Route path='/friends'>
-                                <Friends  friends={ props.state.friendsPage.friends } />
+                                <Friends store={ props.store.getState().friendsPage } />
                             </Route>
                         </Switch>
                     </div>

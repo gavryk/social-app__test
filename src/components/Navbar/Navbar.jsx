@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 import Friend from "../Friends/Friend/Friend";
 
 const Navbar = (props) => {
+    let state = props.store;
 
-
-    let friends = props.friends.map((friend, index) => {
+    let friends = state.friends.map((friend, index) => {
         if (index <= 2) {
             return (
                 <li className='d-flex'>
