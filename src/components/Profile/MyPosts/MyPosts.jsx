@@ -1,7 +1,7 @@
 import React from "react";
-
 import './MyPosts.scss'
 import Post from "./Post/Post";
+import { addPostActionCreator, updatePostActionCreator } from "../../../redux/state";
 
 const MyPosts = (props) => {
 
@@ -13,19 +13,19 @@ const MyPosts = (props) => {
 
     let addPost = () => {
         // props.addPost();
-        props.dispatch({ type: 'ADD_POST' });
+        props.dispatch(addPostActionCreator());
     };
 
     let onPostChanges = () => {
         let text = newPostEl.current.value;
-        props.dispatch({ type: 'UPDATE_NEW_POST_TEXT', newText: text});
+        props.dispatch(updatePostActionCreator(text));
     };
 
     return(
         <div className='posts__wrapper'>
             <h2>My Posts</h2>
             <div className="post-input">
-                <textarea onChange={ onPostChanges } className="form-control" placeholder="Add New Post" ref={ newPostEl } value={props.newPostText} />
+                <textarea onChange={ onPostChanges } className="form-control form-control-lg h-25" placeholder="Add New Post" ref={ newPostEl } value={props.newPostText} />
                 <button className='btn btn-success' onClick={ addPost }>Add Post</button>
             </div>
             <div className="posts-output pt-3">

@@ -17,8 +17,8 @@ const Navbar = (props) => {
     })
 
     return(
-        <div className='navigation shadow rounded d-none d-md-flex d-flex align-items-start flex-column'>
-            <nav className='menu-navigation'>
+        <div className='navigation shadow rounded d-none d-md-flex d-flex align-items-start flex-wrap'>
+            <nav className='menu-navigation col-12 p-0'>
                 <ul className='p-0'>
                     <li>
                         <NavLink to="/profile">Profile</NavLink>
@@ -37,12 +37,12 @@ const Navbar = (props) => {
                     </li>
                 </ul>
             </nav>
-            <div className="friendsList mt-auto">
+            <div className="friendsList mt-auto col-12">
                 <h2 className='text-left'>Friends</h2>
                 <ul className='p-0 d-flex flex-column w-100'>
                     { friends }
                 </ul>
-                <NavLink to='/friends' className='btn btn-success align-center'>View All</NavLink>
+                <NavLink to='/friends' className='btn btn-outline-success align-center btn-sm btn-block'>View All</NavLink>
             </div>
         </div>
 

@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD_POST',
+    UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT',
+    ADD_MESSAGE = 'ADD_MESSAGE',
+    UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
+
 let store = {
     _state: {
         profilePage: {
@@ -48,7 +53,7 @@ let store = {
     },
 
     dispatch(action) { // { type: 'ADD_POST' }
-        if (action.type === 'ADD_POST') {
+        if (action.type === ADD_POST) {
             //ADD POST FOR PROFILE POSTS
             let post = {
                 id: 5,
@@ -59,12 +64,12 @@ let store = {
             this._state.profilePage.newPostText = '';
             this._callSubscriber(this._state);
 
-        } else if (action.type === 'UPDATE_NEW_POST_TEXT') { //{type: 'UPDATE_NEW_POST_TEXT', newText: 'text'}
+        } else if (action.type === UPDATE_NEW_POST_TEXT) { //{type: 'UPDATE_NEW_POST_TEXT', newText: 'text'}
             //NEW POST FOR PROFILE POSTS
             this._state.profilePage.newPostText = action.newText;
             this._callSubscriber(this._state);
 
-        } else if (action.type === 'ADD_MESSAGE') {
+        } else if (action.type === ADD_MESSAGE) {
             //ADD MESSAGE FOR DIALOG PAGE
             let msg = {
                 id: 10,
@@ -74,11 +79,37 @@ let store = {
             this._state.messagesPage.newMessage = '';
             this._callSubscriber(this._state);
 
-        } else if (action.type === 'UPDATE_NEW_MESSAGE_TEXT') {
+        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
             //NEW MESSAGE FOR DIALOG PAGE
             this._state.messagesPage.newMessage = action.newMsg;
             this._callSubscriber(this._state);
         }
+    }
+}
+
+export const addPostActionCreator = () => {
+    return {
+        type: ADD_POST
+    }
+}
+
+export const updatePostActionCreator = (message) => {
+    return {
+        type: UPDATE_NEW_POST_TEXT,
+        newText: message
+    }
+}
+
+export const addMessageActionCreator = () => {
+    return {
+        type: ADD_MESSAGE
+    }
+}
+
+export const updateMessageActionCreator = (message) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_TEXT,
+        newMsg: message
     }
 }
 
