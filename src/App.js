@@ -18,7 +18,7 @@ const App = (props) => {
             <div className="container-md">
                 <div className="row justify-content-between">
                     <Header themeSwitch={ props.themeSwitch }/>
-                    <Navbar friends={ props.state.friends } />
+                    <Navbar friends={ props.state.friendsPage.friends } />
                     <div className="main-content shadow rounded">
                         <Switch>
                             <Route path='/profile'>
@@ -41,7 +41,7 @@ const App = (props) => {
                                 <Settings />
                             </Route>
                             <Route path='/friends'>
-                                <Friends  friends={ props.state.friends } />
+                                <Friends  friends={ props.state.friendsPage.friends } />
                             </Route>
                         </Switch>
                     </div>
