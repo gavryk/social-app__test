@@ -18,14 +18,14 @@ const App = (props) => {
             <div className="container-md">
                 <div className="row justify-content-between">
                     <Header/>
-                    <Navbar store={ props.store.getState().friendsPage } />
+                    <Navbar store={ props.store }/>
                     <div className="main-content shadow rounded">
                         <Switch>
                             <Route path='/profile'>
-                                <Profile store={ props.store } />
+                                <Profile />
                             </Route>
                             <Route path='/dialogs'>
-                                <DialogsContainer store={ props.store } />
+                                <DialogsContainer />
                             </Route>
                             <Route path='/news'>
                                 <News />
