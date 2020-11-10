@@ -8,6 +8,9 @@ let initialState = {
         {id: 4, name: 'Jack', avatar: 'https://pickaface.net/gallery/avatar/20151109_144853_2380_sample.png'},
         {id: 5, name: 'Simon', avatar: 'https://leadslive.io/wp-content/uploads/2017/05/Miniclip-8-Ball-Pool-Avatar-11.png'},
         {id: 6, name: 'Lenon', avatar: userAvatar},
+        {id: 6, name: 'Jesica', avatar: 'https://mediaprofi.kz/wp-content/uploads/2018/06/user-avatar-1.png'},
+        {id: 6, name: 'Alice', avatar: 'https://www.fumagro.ru/sites/default/files/testimonial/avatar-3.jpg'},
+        {id: 6, name: 'Bob', avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMizONQq0jJoWGdunAjkCRbVV7yj_q1rl6QA&usqp=CAU'},
     ]
 }
 

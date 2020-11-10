@@ -2,7 +2,6 @@ import React from 'react';
 import './App.scss';
 import Header from "./components/Header/Header.jsx";
 import Profile from "./components/Profile/Profile.jsx";
-import Navbar from "./components/Navbar/Navbar.jsx";
 
 import { Route, Switch} from 'react-router-dom'
 
@@ -11,6 +10,8 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import NavbarContainer from "./components/Navbar/NavbarContainer";
+import FriendsContainer from "./components/Friends/FriendsContainer";
 
 const App = (props) => {
     return (
@@ -18,7 +19,7 @@ const App = (props) => {
             <div className="container-md">
                 <div className="row justify-content-between">
                     <Header/>
-                    <Navbar store={ props.store }/>
+                    <NavbarContainer />
                     <div className="main-content shadow rounded">
                         <Switch>
                             <Route path='/profile'>
@@ -37,7 +38,7 @@ const App = (props) => {
                                 <Settings />
                             </Route>
                             <Route path='/friends'>
-                                <Friends store={ props.store } />
+                                <FriendsContainer />
                             </Route>
                         </Switch>
                     </div>
