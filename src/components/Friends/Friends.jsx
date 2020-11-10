@@ -1,10 +1,9 @@
 import React from "react";
 import './Friends.scss'
-import userAvatar from "../../img/user-avatar.png";
 import Friend from "./Friend/Friend";
 
 const Friends = (props) => {
-    let state = props.store;
+    let state = props.store.friendsPage;
 
     let friends = state.friends.map((friend) => {
         return (

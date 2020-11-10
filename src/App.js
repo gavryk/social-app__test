@@ -37,7 +37,7 @@ const App = (props) => {
                                 <Settings />
                             </Route>
                             <Route path='/friends'>
-                                <Friends store={ props.store.getState().friendsPage } />
+                                <Friends store={ props.store } />
                             </Route>
                         </Switch>
                     </div>
