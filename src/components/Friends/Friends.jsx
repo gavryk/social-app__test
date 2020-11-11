@@ -8,7 +8,7 @@ const Friends = (props) => {
     let friends = state.friends.map((friend) => {
         return (
             <div className='friend col-3'>
-                <Friend friendName={ friend.name } avatar={ friend.avatar }/>
+                <Friend friendName={ friend.name } key={ friend.id } avatar={ friend.avatar }/>
             </div>
         )
     })

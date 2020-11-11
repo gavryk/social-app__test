@@ -9,9 +9,7 @@ const Navbar = (props) => {
     let friends = state.friends.map((friend, index) => {
         if (index <= 2) {
             return (
-                <li className='d-flex'>
-                    <Friend friendName={ friend.name } avatar={ friend.avatar } />
-                </li>
+                <Friend key={ friend.id } friendName={ friend.name } avatar={ friend.avatar } />
             )
         }
     })
