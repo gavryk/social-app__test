@@ -1,5 +1,6 @@
 const ADD_MESSAGE = 'ADD_MESSAGE',
-    UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
+    UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT',
+    FOCUS_TEXT_AREA = 'FOCUS_TEXT_AREA';
 
 let initialState = {
     dialogs: [
@@ -36,6 +37,11 @@ const dialogsReducer = (state = initialState, action) => {
                 ...state,
                 newMessage: action.newMsg
             };
+        case FOCUS_TEXT_AREA:
+            return {
+                ...state,
+                newMessage: ''
+            }
         default:
             return state;
     }
@@ -51,6 +57,12 @@ export const updateMessageActionCreator = (message) => {
     return {
         type: UPDATE_NEW_MESSAGE_TEXT,
         newMsg: message
+    }
+}
+
+export const focusAreaActionCreator = () => {
+    return {
+        type: FOCUS_TEXT_AREA,
     }
 }
 

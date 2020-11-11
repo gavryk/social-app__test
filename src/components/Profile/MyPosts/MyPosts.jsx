@@ -18,11 +18,16 @@ const MyPosts = (props) => {
         props.updateNewPostText(text);
     };
 
+    let onFocus = () => {
+        props.onFocusNewPostArea();
+    }
+
     return(
         <div className='posts__wrapper'>
             <h2>My Posts</h2>
             <div className="post-input">
                 <textarea
+                    onFocus={ onFocus }
                     onChange={ onPostChanges }
                     className="form-control form-control-lg h-25"
                     placeholder="Add New Post"

@@ -1,4 +1,4 @@
-import {addPostActionCreator, updatePostActionCreator} from "../../../redux/profile-reducer";
+import {addPostActionCreator, onFocusActionCreator, updatePostActionCreator} from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
 import { connect } from "react-redux";
 
@@ -16,6 +16,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         updateNewPostText: (text) => {
             dispatch(updatePostActionCreator(text));
+        },
+        onFocusNewPostArea: () => {
+            dispatch(onFocusActionCreator());
         }
     }
 }

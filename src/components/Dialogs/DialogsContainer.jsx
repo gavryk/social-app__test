@@ -1,4 +1,4 @@
-import { addMessageActionCreator, updateMessageActionCreator } from "../../redux/dialogs-reducer";
+import {addMessageActionCreator, focusAreaActionCreator, updateMessageActionCreator} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
 
@@ -14,6 +14,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         updateMsgText: (text) => {
             dispatch(updateMessageActionCreator(text));
+        },
+        onFocus: () => {
+            dispatch(focusAreaActionCreator());
         }
     }
 }

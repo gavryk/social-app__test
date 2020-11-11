@@ -25,6 +25,10 @@ const Dialogs = (props) => {
         props.updateMsgText(text);
     }
 
+    let onFocus = () => {
+        props.onFocus();
+    }
+
     return (
         <div className='dialog__block'>
             <h1 className='title pb-2 border-bottom'>Dialogs</h1>
@@ -35,7 +39,7 @@ const Dialogs = (props) => {
                 <div className="messages col-8 p-3">
                     { messages }
                     <div className="new-message-input">
-                        <textarea onChange={ onMsgChanges } className="form-control form-control-lg h-25" ref={ newMsg } value={ state.newMessage } />
+                        <textarea onFocus={ onFocus } onChange={ onMsgChanges } className="form-control form-control-lg h-25" ref={ newMsg } value={ state.newMessage } />
                         <div className="btn-wrapper text-center">
                             <button className='btn btn-success mt-2' onClick={ onAddMsg }>Add Message</button>
                         </div>

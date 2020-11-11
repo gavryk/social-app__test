@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD_POST',
-    UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+    UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT',
+    FOCUS_NEW_POST_AREA = 'FOCUS_NEW_POST_AREA';
 
 let initialState = {
     posts: [
@@ -35,6 +36,11 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: action.newText
             }
             return stateCopy;
+        case FOCUS_NEW_POST_AREA:
+            return {
+                ...state,
+                newPostText: ''
+            }
         default:
             return state;
     }
@@ -50,6 +56,12 @@ export const updatePostActionCreator = (message) => {
     return {
         type: UPDATE_NEW_POST_TEXT,
         newText: message
+    }
+}
+
+export const onFocusActionCreator = () => {
+    return {
+        type: FOCUS_NEW_POST_AREA
     }
 }
 
