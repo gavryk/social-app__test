@@ -11,6 +11,7 @@ import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = () => {
     return (
@@ -38,6 +39,9 @@ const App = () => {
                             </Route>
                             <Route path='/friends'>
                                 <FriendsContainer />
+                            </Route>
+                            <Route path='/users'>
+                                <UsersContainer />
                             </Route>
                         </Switch>
                     </div>

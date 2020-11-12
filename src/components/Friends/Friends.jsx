@@ -3,9 +3,9 @@ import './Friends.scss'
 import Friend from "./Friend/Friend";
 
 const Friends = (props) => {
-    let state = props.friendsPage;
+    let state = props.friends;
 
-    let friends = state.friends.map((friend) => {
+    let friends = state.map((friend) => {
         return (
             <div className='friend col-3'>
                 <Friend friendName={ friend.name } key={ friend.id } avatar={ friend.avatar }/>

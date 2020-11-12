@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 import Friend from "../Friends/Friend/Friend";
 
 const Navbar = (props) => {
-    let state = props.friendsPage;
+    let state = props.friends;
 
-    let friends = state.friends.map((friend, index) => {
+    let friends = state.map((friend, index) => {
         if (index <= 2) {
             return (
                 <Friend key={ friend.id } friendName={ friend.name } avatar={ friend.avatar } />
@@ -29,6 +29,9 @@ const Navbar = (props) => {
                     </li>
                     <li>
                         <NavLink to="/music">Music</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/users">Find Users</NavLink>
                     </li>
                     <li className='pt-4'>
                         <NavLink to="/settings">Settings</NavLink>

@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 
 let mapStateToProps = (state) => {
     return {
-        friendsPage: state.friendsPage
+        friends: state.friendsPage.friends
     }
 }
 
