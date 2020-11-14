@@ -1,6 +1,6 @@
 import React from "react";
 import './ProfileInfo.scss'
-import admAvatar  from '../../../img/adm-avatar.jpg'
+import admAvatar  from '../../../assets/img/adm-avatar.jpg'
 
 const ProfileInfo = () => {
     return (

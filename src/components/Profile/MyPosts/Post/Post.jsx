@@ -1,6 +1,6 @@
 import React from "react";
 import './Post.scss'
-import userAvatar from '../../../../img/user-avatar.png'
+import userAvatar from '../../../../assets/img/user-avatar.png'
 
 const Post = (props) => {
     return(

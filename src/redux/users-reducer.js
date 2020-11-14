@@ -1,6 +1,5 @@
-let FOLLOW = 'FOLLOW',
-    UNFOLLOW = 'UNFOLLOW',
-    SET_USERS = 'SET_USERS';
+let SET_USERS = 'SET_USERS',
+    TOGGLE_FOLLOW = 'TOGGLE_FOLLOW';
 
 let initialState = {
     users: [
@@ -13,28 +12,17 @@ let initialState = {
 }
 
 const usersReducer = (state = initialState, action) => {
-
     switch (action.type) {
-        case FOLLOW:
+        case TOGGLE_FOLLOW:
             return {
                 ...state,
                 users: state.users.map(user => {
                     if(user.id === action.userId) {
-                        return {...user, followed: true}
+                        return {...user, followed: !user.followed }
                     }
                     return user;
                 })
-            };
-        case UNFOLLOW:
-            return {
-                ...state,
-                users: state.users.map(user => {
-                    if(user.id === action.userId) {
-                        return {...user, followed: false}
-                    }
-                    return user;
-                })
-            };
+            }
         case SET_USERS:
             return {
                 ...state,
@@ -45,16 +33,9 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const followActionCreator = (userId) => {
+export const toggleFollowActionCreator = (userId) => {
     return {
-        type: FOLLOW,
-        userId
-    }
-}
-
-export const unfollowActionCreator = (userId) => {
-    return {
-        type: UNFOLLOW,
+        type: TOGGLE_FOLLOW,
         userId
     }
 }

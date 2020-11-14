@@ -1,4 +1,4 @@
-import  userAvatar from '../img/user-avatar.png'
+import  userAvatar from '../assets/img/user-avatar.png'
 let SET_FRIENDS = 'SET_FRIENDS'
 
 let initialState = {
