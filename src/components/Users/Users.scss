@@ -1,4 +1,12 @@
 .users_wrapper {
+  .pagination {
+    .currentPage {
+      font-weight: 700;
+    }
+    .page-link {
+      cursor: pointer;
+    }
+  }
   .users {
     .user {
       p {

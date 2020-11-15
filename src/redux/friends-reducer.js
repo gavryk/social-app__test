@@ -1,5 +1,5 @@
 import  userAvatar from '../assets/img/user-avatar.png'
-let SET_FRIENDS = 'SET_FRIENDS'
+let SET_FRIENDS = 'SET_FRIENDS';
 
 let initialState = {
     friends: [
@@ -17,16 +17,16 @@ let initialState = {
 
 const friendsReducer = (state = initialState, action) => {
 
-    switch(action.type === SET_FRIENDS) {
+    switch(action.type) {
         case SET_FRIENDS: {
             return {
                 ...state,
                 friends: [...state.friends, ...action.friends]
             }
         }
+        default:
+            return state
     }
-
-    return state;
 }
 
 export const setFriendsActionCreator = (friends) => {

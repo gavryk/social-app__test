@@ -7,11 +7,7 @@ const Navbar = (props) => {
     let state = props.friends;
 
     let friends = state.map((friend, index) => {
-        if (index <= 2) {
-            return (
-                <Friend key={ friend.id } friendName={ friend.name } avatar={ friend.avatar } />
-            )
-        }
+        return index<=2 ? <Friend key={ friend.id } friendName={ friend.name } avatar={ friend.avatar } /> : ''
     })
 
     return(

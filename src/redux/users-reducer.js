@@ -1,5 +1,7 @@
-let SET_USERS = 'SET_USERS',
-    TOGGLE_FOLLOW = 'TOGGLE_FOLLOW';
+const SET_USERS = 'SET_USERS',
+    TOGGLE_FOLLOW = 'TOGGLE_FOLLOW',
+    SET_CURRENT_PAGE = 'SET_CURRENT_PAGE',
+    SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 
 let initialState = {
     users: [
@@ -8,7 +10,10 @@ let initialState = {
         // {id: 3, photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ8jukJjL_rGWuDa2UBfRwgUDpLhjbeGp7wug&usqp=CAU', followed: false, fullName: 'Simon H.', status: 'Lol', location: { city: 'Moscow', country: 'Russia' }},
         // {id: 4, photoUrl: 'https://medicallist.ru/images/myimg/ava2.jpg', followed: true, fullName: 'Jessica D.', status: 'Hello everybody', location: { city: 'Berlin', country: 'Germany'}},
         // {id: 5, photoUrl: 'https://lh3.googleusercontent.com/proxy/hL0ltqwgD9lyoV2p1f2wuOPdcNeWHTPHhyBURTr9PASDsvVAhMWO_Sx3-8x9cZGvjrVUdKkVdLGAV1J2KLnMPOHbh1kVC36RFqwq76g', followed: false, fullName: 'Bob M.', status: 'I need a job!', location: { city: 'New York', country: 'USA'}}
-    ]
+    ],
+    pageSize: 12,
+    totalUserCount: 0,
+    currentPage: 1
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -26,7 +31,17 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS:
             return {
                 ...state,
-                users: [...state.users, ...action.users]
+                users: action.users
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.page
+            }
+        case SET_TOTAL_COUNT:
+            return {
+                ...state,
+                totalUserCount: action.total
             }
         default:
             return state;
@@ -44,6 +59,20 @@ export const setUsersActionCreator = (users) => {
     return {
         type: SET_USERS,
         users
+    }
+}
+
+export const setCurrentPageActionCreator = (page) => {
+    return {
+        type: SET_CURRENT_PAGE,
+        page
+    }
+}
+
+export const setTotalCountActionCreator = (total) => {
+    return {
+        type: SET_TOTAL_COUNT,
+        total
     }
 }
 

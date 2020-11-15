@@ -17,6 +17,7 @@ img {
     max-width: 100%;
   }
   > div {
+    padding: 0 5px;
     max-height: calc(100vh - 120px);
     overflow-y: scroll;
     overflow-x: hidden;
