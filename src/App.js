@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.scss';
-import Header from "./components/Header/Header.jsx";
-
-import { Route, Switch} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
@@ -12,13 +10,14 @@ import NavbarContainer from "./components/Navbar/NavbarContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = () => {
     return (
         <div className={`app-wrapper`}>
             <div className="container-md">
                 <div className="row justify-content-between">
-                    <Header/>
+                    <HeaderContainer />
                     <NavbarContainer />
                     <div className="main-content shadow rounded">
                         <Switch>

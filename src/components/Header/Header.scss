@@ -6,4 +6,10 @@ header {
   .logo img {
     max-width: 100px;
   }
+  .login-block {
+    .btn-login {
+      background: linear-gradient(135deg, #4f5261 0%, #383a45 50%);
+      color: #fff;
+    }
+  }
 }
