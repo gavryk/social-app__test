@@ -22,7 +22,7 @@ const App = () => {
                     <NavbarContainer />
                     <div className="main-content shadow rounded">
                         <Switch>
-                            <Route path='/profile'>
+                            <Route path='/profile/:userId'>
                                 <ProfileContainer />
                             </Route>
                             <Route path='/dialogs'>
