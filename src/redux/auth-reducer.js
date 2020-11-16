@@ -1,9 +1,11 @@
-const SET_USER_DATA = 'SET_USER_DATA';
+const SET_USER_DATA = 'SET_USER_DATA',
+      TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 let initialState = {
     userId: null,
     email: null,
     login: null,
+    isFetching: true,
     isAuth: false
 }
 

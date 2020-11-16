@@ -2,6 +2,7 @@ import userAvatar from "../../assets/img/user-avatar.png";
 import React from "react";
 import './Users.scss';
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
@@ -39,7 +40,31 @@ const Users = (props) => {
                                 <h5 className="card-title">{ user.name }</h5>
                                 <p className="card-text">{ user.status }</p>
                                 <button
-                                    onClick={() => { props.toggleFollow(user.id) }}
+                                    onClick={() => {
+                                        !user.followed
+                                            ? axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
+                                                withCredentials: true,
+                                                headers: {
+                                                    "API-KEY": "b706ce9b-cfd3-4974-907d-b28258a2e61b"
+                                                }
+                                            })
+                                                .then(response => {
+                                                    if (response.data.resultCode === 0){
+                                                        props.toggleFollow(user.id)
+                                                    }
+                                                })
+                                            : axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
+                                                withCredentials: true,
+                                                headers: {
+                                                    "API-KEY": "b706ce9b-cfd3-4974-907d-b28258a2e61b"
+                                                }
+                                            })
+                                                .then(response => {
+                                                    if (response.data.resultCode === 0){
+                                                        props.toggleFollow(user.id)
+                                                    }
+                                                });
+                                    }}
                                     className={`btn ${!user.followed ? 'btn-success' : 'btn-danger'}`}>{!user.followed ? 'Fallow' : 'Unfollow'}
                                 </button>
                             </div>

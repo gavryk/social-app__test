@@ -30,5 +30,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    setUserData
+    setUserData,
 })(HeaderContainer)
