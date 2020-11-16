@@ -1,6 +1,7 @@
 const ADD_POST = 'ADD_POST',
     UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT',
-    FOCUS_NEW_POST_AREA = 'FOCUS_NEW_POST_AREA';
+    FOCUS_NEW_POST_AREA = 'FOCUS_NEW_POST_AREA',
+    SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
     posts: [
@@ -10,6 +11,7 @@ let initialState = {
         {id: 4, message: 'Hello', like: 150},
         {id: 5, message: 'What?', like: 154}
     ],
+    profile: null,
     newPostText: 'My Social App'
 };
 
@@ -41,6 +43,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 newPostText: ''
             }
+        case SET_USER_PROFILE:
+            return {
+                ...state,
+                profile: action.profile
+            }
         default:
             return state;
     }
@@ -62,6 +69,13 @@ export const updatePostActionCreator = (message) => {
 export const onFocusActionCreator = () => {
     return {
         type: FOCUS_NEW_POST_AREA
+    }
+}
+
+export const setUserProfile = (profile) => {
+    return {
+        type: SET_USER_PROFILE,
+        profile
     }
 }
 
