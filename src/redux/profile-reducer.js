@@ -1,7 +1,8 @@
 const ADD_POST = 'ADD_POST',
     UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT',
     FOCUS_NEW_POST_AREA = 'FOCUS_NEW_POST_AREA',
-    SET_USER_PROFILE = 'SET_USER_PROFILE';
+    SET_USER_PROFILE = 'SET_USER_PROFILE',
+    SET_FETCHING = 'SET_FETCHING';
 
 let initialState = {
     posts: [
@@ -12,7 +13,8 @@ let initialState = {
         {id: 5, message: 'What?', like: 154}
     ],
     profile: null,
-    newPostText: 'My Social App'
+    newPostText: 'My Social App',
+    isFetching: true
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -48,6 +50,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profile: action.profile
             }
+        case SET_FETCHING:
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
         default:
             return state;
     }
@@ -58,24 +65,27 @@ export const addPostActionCreator = () => {
         type: ADD_POST
     }
 }
-
 export const updatePostActionCreator = (message) => {
     return {
         type: UPDATE_NEW_POST_TEXT,
         newText: message
     }
 }
-
 export const onFocusActionCreator = () => {
     return {
         type: FOCUS_NEW_POST_AREA
     }
 }
-
 export const setUserProfile = (profile) => {
     return {
         type: SET_USER_PROFILE,
         profile
+    }
+}
+export const setFetching = (isFetching) => {
+    return {
+        type: SET_FETCHING,
+        isFetching
     }
 }
 
