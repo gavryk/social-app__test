@@ -20,6 +20,7 @@ const Musics = (props) => {
                     props.setIsFetching(true);
                     getMusic(6, props.searchText)
                         .then(data => {
+                            debugger
                             props.setIsFetching(false);
                             let musics = data.data;
                             props.setMusic(musics);

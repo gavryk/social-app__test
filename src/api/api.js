@@ -1,15 +1,28 @@
 import * as axios from "axios";
 
-export const getUsers = (currentPage = 1, pageSize = 10) => {
-    return axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${ currentPage }&count=${ pageSize }`, {
-        withCredentials: true,
-    }).then(response => response.data)
+const musicUrl = 'https://deezerdevs-deezer.p.rapidapi.com/';
+
+const instanceUser = axios.create({
+    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+    withCredentials: true,
+    headers: {
+        "API-KEY": "96b5b4b4-2b9b-41b2-abb3-0e572094ac98"
+    }
+
+})
+export const userAPI = {
+    getUsers(currentPage = 1, pageSize = 10) {
+        return instanceUser.get(`users?page=${ currentPage }&count=${ pageSize }`)
+            .then(response => {
+                return response.data
+            })
+    }
 }
 
 
 
 export const getMusic = (radioId = 6, searchArtist) => {
-    return axios.get('https://deezerdevs-deezer.p.rapidapi.com/search', {
+    return axios.get(`${musicUrl}search`, {
         params: {q: searchArtist},
         withCredentials: true,
         headers: {

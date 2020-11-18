@@ -9,12 +9,12 @@ import {
     toggleFollow,
 } from "../../redux/users-reducer";
 import Loader from "../Loader/Loader";
-import {getUsers} from "../../api/api";
+import {userAPI} from "../../api/api";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.setIsFetching(true);
-        getUsers(this.props.currentPage, this.props.pageSize)
+        userAPI.getUsers(this.props.currentPage, this.props.pageSize)
             .then(data => {
                 this.props.setIsFetching(false);
                 this.props.setUsers(data.items);
@@ -26,7 +26,7 @@ class UsersContainer extends React.Component {
     onChangedPage = (page) => {
         this.props.setIsFetching(true);
         this.props.setPage(page);
-        getUsers(page, this.props.pageSize)
+        userAPI.getUsers(page, this.props.pageSize)
             .then(data => {
                 this.props.setIsFetching(false);
                 this.props.setUsers(data.items);
