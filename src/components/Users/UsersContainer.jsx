@@ -15,10 +15,10 @@ class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.setIsFetching(true);
         getUsers(this.props.currentPage, this.props.pageSize)
-            .then(response => {
+            .then(data => {
                 this.props.setIsFetching(false);
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUserCount(response.data.totalCount);
+                this.props.setUsers(data.items);
+                this.props.setTotalUserCount(data.totalCount);
             });
     }
 
@@ -27,9 +27,9 @@ class UsersContainer extends React.Component {
         this.props.setIsFetching(true);
         this.props.setPage(page);
         getUsers(page, this.props.pageSize)
-            .then(response => {
+            .then(data => {
                 this.props.setIsFetching(false);
-                this.props.setUsers(response.data.items);
+                this.props.setUsers(data.items);
             });
     }
 

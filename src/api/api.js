@@ -3,7 +3,7 @@ import * as axios from "axios";
 export const getUsers = (currentPage = 1, pageSize = 10) => {
     return axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${ currentPage }&count=${ pageSize }`, {
         withCredentials: true,
-    })
+    }).then(response => response.data)
 }
 
 
@@ -16,5 +16,5 @@ export const getMusic = (radioId = 6, searchArtist) => {
             'x-rapidapi-key': 'e190ea7db0msha70ac2b007e086dp1fc146jsna246d532874c',
             'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com'
         }
-    })
+    }).then(response => response.data)
 }

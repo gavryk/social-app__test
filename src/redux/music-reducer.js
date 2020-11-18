@@ -1,13 +1,11 @@
 const SET_MUSIC = 'SET_MUSIC',
     TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING',
-    UPDATE_ARTIST_SEARCH = 'UPDATE_ARTIST_SEARCH',
-    SEARCH_NEW_ARTIST = 'SEARCH_NEW_ARTIST';
+    UPDATE_ARTIST_SEARCH = 'UPDATE_ARTIST_SEARCH';
 
 let initialState = {
     musics: [],
     isFetching: true,
     searchText: '',
-    newArtist: '*'
 }
 
 const musicReducer = (state = initialState, action) => {
@@ -27,11 +25,6 @@ const musicReducer = (state = initialState, action) => {
                 ...state,
                 searchText: action.newArtist
             }
-        case SEARCH_NEW_ARTIST:
-            return {
-                ...state,
-                newArtist: state.searchText
-            }
         default:
             return state;
     }
@@ -50,12 +43,6 @@ export const artistSearchText = (newArtist) => {
     return {
         type: UPDATE_ARTIST_SEARCH,
         newArtist
-    }
-}
-
-export const searchNewArtist = () => {
-    return {
-        type: SEARCH_NEW_ARTIST
     }
 }
 
