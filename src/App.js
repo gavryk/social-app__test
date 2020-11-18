@@ -3,7 +3,6 @@ import './App.scss';
 import {Route, Switch} from 'react-router-dom'
 
 import News from "./components/News/News";
-import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
@@ -11,6 +10,7 @@ import FriendsContainer from "./components/Friends/FriendsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import MusicContainer from "./components/Music/MusicContainer";
 
 const App = () => {
     return (
@@ -31,7 +31,7 @@ const App = () => {
                                 <News />
                             </Route>
                             <Route path='/music'>
-                                <Music />
+                                <MusicContainer />
                             </Route>
                             <Route path='/settings'>
                                 <Settings />
