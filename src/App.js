@@ -3,7 +3,6 @@ import './App.scss';
 import {Route, Switch} from 'react-router-dom'
 
 import News from "./components/News/News";
-import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
@@ -11,10 +10,15 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import MusicContainer from "./components/Music/MusicContainer";
+import SettingsContainer from "./components/Settings/SettingsContainer";
+import {connect} from "react-redux";
 
-const App = () => {
+const App = (props) => {
+
+    let storageTheme = localStorage.getItem('app-theme')
+
     return (
-        <div className={`app-wrapper`}>
+        <div className={`app-wrapper ${props.appTheme ? 'dark' : 'light'}`}>
             <div className="container-md">
                 <div className="row justify-content-between">
                     <HeaderContainer />
@@ -34,7 +38,7 @@ const App = () => {
                                 <MusicContainer />
                             </Route>
                             <Route path='/settings'>
-                                <Settings />
+                                <SettingsContainer />
                             </Route>
                             <Route path='/friends'>
                                 <FriendsContainer />
@@ -50,5 +54,10 @@ const App = () => {
     );
 }
 
+let mapStateToProps = (state) => {
+    return {
+        appTheme: state.settingsPage.themeDark
+    }
+}
 
-export default App;
+export default connect(mapStateToProps, {})(App);
