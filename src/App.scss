@@ -73,4 +73,13 @@ html {
     background: $dark_main-color;
     border-radius: 2px;
   }
+
+  .pagination .page-link {
+    background-color: transparent;
+    border-color: $dark-main-color;
+    color: #fff;
+    &:hover {
+      background-color: $dark-main-color;
+    }
+  }
 }
