@@ -1,6 +1,17 @@
+import React from "react";
 import {connect} from "react-redux";
 import Friends from "./Friends";
 import {setFriendsActionCreator} from "../../redux/friends-reducer";
+
+class FriendsContainer extends React.Component {
+    render() {
+        return (
+           <Friends
+               {...this.props}
+           />
+        )
+    }
+}
 
 let mapStateToProps = ( state ) => {
     return {
@@ -8,14 +19,7 @@ let mapStateToProps = ( state ) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        setFriends: (friends) => {
-            dispatch(setFriendsActionCreator(friends));
-        }
-    }
-}
 
-const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends)
-
-export default FriendsContainer;
+export default connect(mapStateToProps, {
+    setFriendsActionCreator
+})(FriendsContainer)

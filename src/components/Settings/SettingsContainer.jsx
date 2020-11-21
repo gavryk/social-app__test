@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {toggleAppTheme} from "../../redux/setting-reducer";
 
 class SettingsContainer extends React.Component {
-
     render() {
         return (
             <Settings

@@ -13,3 +13,9 @@ header {
     }
   }
 }
+
+.dark {
+  header {
+    background: $dark_main-color;
+  }
+}

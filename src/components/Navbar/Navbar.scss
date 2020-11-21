@@ -36,7 +36,7 @@
           left: 0;
           width: 0%;
           height: 2px;
-          transition: 600ms ease;
+          transition: 300ms ease-in-out;
         }
         &:hover {
           background-position: 0 100%;
@@ -67,5 +67,4 @@
       }
     }
   }
-
 }

@@ -14,8 +14,8 @@ const Musics = (props) => {
     return (
         <div>
             <h1 className='title pb-2 border-bottom'>Music</h1>
-            <div className="search-input">
-                <input onChange={ onSearchChanges } ref={newArtist} value={ props.searchText } className="form-control mr-sm-2"/>
+            <div className="search-input text-center">
+                <input onChange={ onSearchChanges } ref={newArtist} value={ props.searchText } className="form-control mr-sm-2 mb-2"/>
                 <button onClick={ () => {
                     props.setIsFetching(true);
                     getMusic(6, props.searchText)
@@ -27,7 +27,7 @@ const Musics = (props) => {
                         })
                 } } className="btn btn-outline-success my-2 my-sm-0">Search</button>
             </div>
-            <div className="music-wrapper row">
+            <div className="music-wrapper row pt-2">
                 {
                     props.musics.map((music) => {
                         return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.scss';
 import {Route, Switch} from 'react-router-dom'
 
@@ -14,8 +14,6 @@ import SettingsContainer from "./components/Settings/SettingsContainer";
 import {connect} from "react-redux";
 
 const App = (props) => {
-
-    let storageTheme = localStorage.getItem('app-theme')
 
     return (
         <div className={`app-wrapper ${props.appTheme ? 'dark' : 'light'}`}>

@@ -25,6 +25,10 @@
 .ldio-xiup40jhy1 > div:nth-child(2) {
     border-color: transparent #45464a transparent #45464a
 }
+
+.dark .ldio-xiup40jhy1 > div:nth-child(2) {
+    border-color: transparent #fff transparent #fff
+}
 .ldio-xiup40jhy1 > div:nth-child(3) { border-color: transparent }
 .ldio-xiup40jhy1 > div:nth-child(3) div {
     position: absolute;
@@ -69,10 +73,17 @@
     border-radius: 50%;
     box-shadow: 0 62.099999999999994px 0 0 #45464a;
 }
+.dark .ldio-xiup40jhy1 > div:nth-child(4) div:before, .ldio-xiup40jhy1 > div:nth-child(4) div:after {
+    background: #fff;
+    box-shadow: 0 62.099999999999994px 0 0 #fff;
+}
 .ldio-xiup40jhy1 > div:nth-child(4) div:after {
     left: -6.209999999999999px;
     top: 24.839999999999996px;
     box-shadow: 62.099999999999994px 0 0 0 #45464a;
+}
+.dark .ldio-xiup40jhy1 > div:nth-child(4) div:after {
+    box-shadow: 62.099999999999994px 0 0 0 #fff;
 }
 .loadingio-spinner-double-ring-9cvpyj0e2mm {
     width: 100%;

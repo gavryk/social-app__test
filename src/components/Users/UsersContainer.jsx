@@ -7,6 +7,7 @@ import {
     toggleFollow, toggleFollowingProgress,
 } from "../../redux/users-reducer";
 import Loader from "../Loader/Loader";
+import {getWether} from "../../api/api";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
