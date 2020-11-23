@@ -1,0 +1,95 @@
+.weather-container {
+  background-image: url('../../assets/img/cold-weather.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  padding-bottom: 30px;
+  min-height: 300px;
+  transition: .4s linear;
+  &.warm {
+    background-image: url('../../assets/img/warm-weather.png');
+    &.clear {
+      background-image: url('../../assets/img/sunny-weather.jpg');
+    }
+  }
+  &.snow {
+    background-image: url('../../assets/img/snow-weather.jpg');
+  }
+  &.rain {
+    background-image: url('../../assets/img/rain-weather.jpg');
+  }
+  &.clouds {
+    background-image: url('../../assets/img/cloud-weather.jpg');
+  }
+  &.mist {
+    background-image: url('../../assets/img/mist-weather.jpg');
+  }
+  &.haze {
+    background-image: url('../../assets/img/haze-weather.jpg');
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .3);
+    z-index: 1;
+  }
+  > * {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+  }
+  .search-box {
+    .search-bar {
+      display: block;
+      width: 80%;
+      margin: 0 auto;
+      padding: 10px;
+      appearance: none;
+      background-color: rgba(255, 255, 255, .7);
+      outline: none;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 5px rgba(0, 0, 0, .2);
+    }
+  }
+  .location-box {
+    text-align: center;
+    padding-top: 30px;
+    .location {
+      text-shadow: 3px 3px rgba(50, 50, 70, .5);
+    }
+    .date {
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 500;
+      text-shadow: 2px 2px rgba(50, 50, 70, .5);
+    }
+  }
+
+  .weather-box {
+    text-align: center;
+    .temp {
+      position: relative;
+      display: inline-block;
+      margin: 15px auto;
+      background: rgba(255, 255, 255, .2);
+      padding: 10px 15px;
+      font-size: 80px;
+      line-height: 1;
+      font-weight: 700;
+      text-shadow: 2px 2px rgba(50, 50, 70, .5);
+      border-radius: 20px;
+      box-shadow: 0 5px rgba(0, 0, 0, .2);
+    }
+    .weather {
+      font-size: 48px;
+      font-weight: 700;
+      text-shadow: 2px 2px rgba(50, 50, 70, .5);
+    }
+  }
+}

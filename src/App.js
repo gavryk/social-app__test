@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.scss';
 import {Route, Switch} from 'react-router-dom'
-
-import News from "./components/News/News";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
@@ -12,6 +10,7 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import MusicContainer from "./components/Music/MusicContainer";
 import SettingsContainer from "./components/Settings/SettingsContainer";
 import {connect} from "react-redux";
+import News from "./components/News/News";
 
 const App = (props) => {
 
@@ -30,7 +29,7 @@ const App = (props) => {
                                 <DialogsContainer />
                             </Route>
                             <Route path='/news'>
-                                <News />
+                                <News/>
                             </Route>
                             <Route path='/music'>
                                 <MusicContainer />
