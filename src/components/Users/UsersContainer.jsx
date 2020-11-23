@@ -2,12 +2,12 @@ import {connect} from "react-redux";
 import React from "react";
 import Users from "./Users";
 import {
+    followThunk,
     getUsers,
     setPage,
-    toggleFollow, toggleFollowingProgress,
+    toggleFollow, toggleFollowingProgress, unFollowThunk,
 } from "../../redux/users-reducer";
 import Loader from "../Loader/Loader";
-import {getWether} from "../../api/api";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -28,9 +28,9 @@ class UsersContainer extends React.Component {
                         pageSize={this.props.pageSize}
                         currentPage={this.props.currentPage}
                         onChangedPage={this.onChangedPage}
-                        toggleFollow={this.props.toggleFollow}
+                        followThunk={this.props.followThunk}
+                        unFollowThunk={this.props.unFollowThunk}
                         users={this.props.users}
-                        toggleFollowingProgress={this.props.toggleFollowingProgress}
                         followingInProgress={this.props.followingInProgress}
                     />
                 }
@@ -54,5 +54,7 @@ export default connect(mapStateToProps, {
     toggleFollow,
     setPage,
     getUsers,
-    toggleFollowingProgress
+    toggleFollowingProgress,
+    followThunk,
+    unFollowThunk
 })(UsersContainer);

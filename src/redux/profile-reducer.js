@@ -1,3 +1,5 @@
+import {userAPI} from "../api/api";
+
 const ADD_POST = 'ADD_POST',
     UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT',
     FOCUS_NEW_POST_AREA = 'FOCUS_NEW_POST_AREA',
@@ -60,6 +62,7 @@ const profileReducer = (state = initialState, action) => {
     }
 };
 
+//ACTIONS
 export const addPostActionCreator = () => {
     return {
         type: ADD_POST
@@ -86,6 +89,18 @@ export const setFetching = (isFetching) => {
     return {
         type: SET_FETCHING,
         isFetching
+    }
+}
+
+//THUNK
+export const getProfile = (userId) => {
+    return(dispatch) => {
+        dispatch(setFetching(true));
+        userAPI.getProfile(userId)
+            .then(response => {
+            dispatch(setFetching(false));
+            dispatch(setUserProfile(response.data));
+        });
     }
 }
 

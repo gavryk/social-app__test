@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import Friends from "./Friends";
-import {setFriendsActionCreator} from "../../redux/friends-reducer";
+import {setFriends} from "../../redux/friends-reducer";
 
 class FriendsContainer extends React.Component {
     render() {
@@ -15,11 +15,11 @@ class FriendsContainer extends React.Component {
 
 let mapStateToProps = ( state ) => {
     return {
-        friends: state.friendsPage.friends
+        friends: state.friendsPage.friends,
     }
 }
 
 
 export default connect(mapStateToProps, {
-    setFriendsActionCreator
+    setFriends
 })(FriendsContainer)

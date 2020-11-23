@@ -2,9 +2,7 @@ import userAvatar from "../../assets/img/user-avatar.png";
 import React from "react";
 import './Users.scss';
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
 import {userAPI} from "../../api/api";
-import {toggleFollowingProgress} from "../../redux/users-reducer";
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
@@ -44,22 +42,9 @@ const Users = (props) => {
                                 <button
                                     disabled={props.followingInProgress.some(id => id === user.id)}
                                     onClick={() => {
-                                        props.toggleFollowingProgress(true, user.id);
                                         !user.followed
-                                            ? userAPI.follow(user.id)
-                                                .then( data => {
-                                                    if (data.resultCode === 0){
-                                                        props.toggleFollow(user.id)
-                                                    }
-                                                    props.toggleFollowingProgress(false, user.id);
-                                                })
-                                            :   userAPI.unfollow(user.id)
-                                                .then(data => {
-                                                    if (data.resultCode === 0){
-                                                        props.toggleFollow(user.id)
-                                                    }
-                                                    props.toggleFollowingProgress(false, user.id);
-                                                });
+                                            ? props.followThunk(user.id)
+                                            : props.unFollowThunk(user.id)
                                     }}
                                     className={`btn ${!user.followed ? 'btn-success' : 'btn-danger'}`}>{!user.followed ? 'Fallow' : 'Unfollow'}
                                 </button>

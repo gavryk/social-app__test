@@ -1,19 +1,13 @@
 import React from "react";
 import {connect} from "react-redux";
-import {artistSearchText, setIsFetching, setMusic} from "../../redux/music-reducer";
+import {artistSearchText, getMusicSearch, getMusicThunk, setIsFetching, setMusic} from "../../redux/music-reducer";
 import Musics from "./Musics";
 import {getMusic} from "../../api/api";
 import Loader from "../Loader/Loader";
 
 class MusicContainer extends React.Component {
     componentDidMount() {
-        this.props.setIsFetching(true);
-        getMusic(6, '*')
-            .then(data => {
-                this.props.setIsFetching(false);
-                let musics = data.data;
-                this.props.setMusic(musics);
-            })
+       this.props.getMusicThunk()
     }
 
     render() {
@@ -26,7 +20,7 @@ class MusicContainer extends React.Component {
                             { ...this.props }
                             musics={this.props.musics}
                             searchText={ this.props.searchText }
-                            getMusic={this.props.getMusic}
+                            getMusicSearch={this.props.getMusicSearch}
                         />
                 }
             </>
@@ -47,4 +41,6 @@ export default connect(mapStateToProps, {
     setMusic,
     setIsFetching,
     artistSearchText,
+    getMusicThunk,
+    getMusicSearch
 })(MusicContainer);

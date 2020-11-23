@@ -17,14 +17,7 @@ const Musics = (props) => {
             <div className="search-input text-center">
                 <input onChange={ onSearchChanges } ref={newArtist} value={ props.searchText } className="form-control mr-sm-2 mb-2"/>
                 <button onClick={ () => {
-                    props.setIsFetching(true);
-                    getMusic(6, props.searchText)
-                        .then(data => {
-                            debugger
-                            props.setIsFetching(false);
-                            let musics = data.data;
-                            props.setMusic(musics);
-                        })
+                    props.getMusicSearch(props.searchText)
                 } } className="btn btn-outline-success my-2 my-sm-0">Search</button>
             </div>
             <div className="music-wrapper row pt-2">

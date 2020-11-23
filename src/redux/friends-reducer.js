@@ -12,7 +12,7 @@ let initialState = {
         {id: 8, name: 'Jesica', avatar: 'https://mediaprofi.kz/wp-content/uploads/2018/06/user-avatar-1.png'},
         {id: 9, name: 'Alice', avatar: 'https://www.fumagro.ru/sites/default/files/testimonial/avatar-3.jpg'},
         {id: 10, name: 'Bob', avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMizONQq0jJoWGdunAjkCRbVV7yj_q1rl6QA&usqp=CAU'},
-    ]
+    ],
 }
 
 const friendsReducer = (state = initialState, action) => {
@@ -21,7 +21,7 @@ const friendsReducer = (state = initialState, action) => {
         case SET_FRIENDS: {
             return {
                 ...state,
-                friends: [...state.friends, ...action.friends]
+                friends: action.friends
             }
         }
         default:
@@ -29,11 +29,13 @@ const friendsReducer = (state = initialState, action) => {
     }
 }
 
-export const setFriendsActionCreator = (friends) => {
+export const setFriends = (friends) => {
     return {
         type: SET_FRIENDS,
         friends
     }
 }
+
+//THUNK For SetFriends
 
 export default friendsReducer;
