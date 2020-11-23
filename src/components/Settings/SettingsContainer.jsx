@@ -3,6 +3,7 @@ import Settings from "./Settings";
 import {connect} from "react-redux";
 import {toggleAppTheme} from "../../redux/setting-reducer";
 import {withAuthRedirectComponent} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 class SettingsContainer extends React.Component {
     render() {
@@ -22,8 +23,14 @@ let mapStateToProps = (state) => {
     }
 }
 
+compose(
+    connect(mapStateToProps, {toggleAppTheme}),
+    withAuthRedirectComponent
+)(SettingsContainer)
+
 let AutRedirectComponent = withAuthRedirectComponent(SettingsContainer);
 
-export default connect(mapStateToProps, {
-    toggleAppTheme
-})(AutRedirectComponent)
+export default compose(
+    connect(mapStateToProps, {toggleAppTheme}),
+    withAuthRedirectComponent
+)(SettingsContainer);
