@@ -35,6 +35,12 @@ export const userAPI = {
     }
 }
 
+export const authAPI = {
+    me() {
+        return instanceUser.get('auth/me')
+    }
+}
+
 
 
 export const getMusic = (radioId = 6, searchArtist) => {
