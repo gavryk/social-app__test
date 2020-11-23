@@ -8,6 +8,7 @@ import {
     toggleFollow, toggleFollowingProgress, unFollowThunk,
 } from "../../redux/users-reducer";
 import Loader from "../Loader/Loader";
+import {withAuthRedirectComponent} from "../../hoc/withAuthRedirect";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -50,6 +51,8 @@ let mapStateToProps = (state) => {
     }
 }
 
+let withRedirect = withAuthRedirectComponent(UsersContainer)
+
 export default connect(mapStateToProps, {
     toggleFollow,
     setPage,
@@ -57,4 +60,4 @@ export default connect(mapStateToProps, {
     toggleFollowingProgress,
     followThunk,
     unFollowThunk
-})(UsersContainer);
+})(withRedirect);
