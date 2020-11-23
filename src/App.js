@@ -11,6 +11,7 @@ import MusicContainer from "./components/Music/MusicContainer";
 import SettingsContainer from "./components/Settings/SettingsContainer";
 import {connect} from "react-redux";
 import News from "./components/News/News";
+import Login from "./components/Login/Login";
 
 const App = (props) => {
 
@@ -42,6 +43,9 @@ const App = (props) => {
                             </Route>
                             <Route path='/users'>
                                 <UsersContainer />
+                            </Route>
+                            <Route path='/login'>
+                                <Login/>
                             </Route>
                         </Switch>
                     </div>

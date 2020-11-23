@@ -2,6 +2,7 @@ import React from "react";
 import './Dialogs.scss'
 import DialogItem from "./Dialog/Dialog";
 import Message from "./Message/Message";
+import {Redirect} from "react-router-dom";
 
 const Dialogs = (props) => {
     let state = props.dialogsPage
@@ -28,6 +29,8 @@ const Dialogs = (props) => {
     let onFocus = () => {
         props.onFocus();
     }
+
+    if (!props.isAuth) return <Redirect to={'/login'}/>
 
     return (
         <div className='dialog__block'>
