@@ -2,6 +2,7 @@ import React from "react";
 import './ProfileInfo.scss'
 import Loader from "../../Loader/Loader";
 import userAvatar from "../../../assets/img/user-avatar.png";
+import ProfileStatus from './ProfileStatus'
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -27,6 +28,7 @@ const ProfileInfo = (props) => {
                     <img src={ props.profile.photos.large !== null ? props.profile.photos.large : userAvatar }  alt="adm-avatar"/>
                 </div>
                 <h1>{ props.profile.fullName }</h1>
+                <ProfileStatus status={'Hello My Friends!!!'}/>
 
                 <div className="profile-full-info text-left">
                     <h2>About Me:</h2>
