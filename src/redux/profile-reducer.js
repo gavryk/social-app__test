@@ -1,10 +1,11 @@
-import {userAPI} from "../api/api";
+import {profileAPI, userAPI} from "../api/api";
 
 const ADD_POST = 'ADD_POST',
     UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT',
     FOCUS_NEW_POST_AREA = 'FOCUS_NEW_POST_AREA',
     SET_USER_PROFILE = 'SET_USER_PROFILE',
-    SET_FETCHING = 'SET_FETCHING';
+    SET_FETCHING = 'SET_FETCHING',
+    SET_STATUS = 'SET_STATUS';
 
 let initialState = {
     posts: [
@@ -16,7 +17,8 @@ let initialState = {
     ],
     profile: null,
     newPostText: 'My Social App',
-    isFetching: true
+    isFetching: true,
+    status: ''
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -57,6 +59,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.isFetching
             }
+        case SET_STATUS:
+            return {
+                ...state,
+                status: action.status
+            }
         default:
             return state;
     }
@@ -92,6 +99,13 @@ export const setFetching = (isFetching) => {
     }
 }
 
+export const setStatus = (status) => {
+    return {
+        type: SET_STATUS,
+        status
+    }
+}
+
 //THUNK
 export const getProfile = (userId) => {
     return(dispatch) => {
@@ -101,6 +115,25 @@ export const getProfile = (userId) => {
             dispatch(setFetching(false));
             dispatch(setUserProfile(response.data));
         });
+    }
+}
+
+export const getStatus = (userId) => {
+    return(dispatch) => {
+        profileAPI.getStatus(userId)
+            .then(response => {
+               dispatch(setStatus(response.data));
+            });
+    }
+}
+export const updateStatus = (status) => {
+    return(dispatch) => {
+        profileAPI.updateStatus(status)
+            .then(response => {
+                if(response.data.resultCode === 0) {
+                    dispatch(setStatus(status));
+                }
+            });
     }
 }
 

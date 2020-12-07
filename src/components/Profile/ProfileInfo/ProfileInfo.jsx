@@ -28,7 +28,7 @@ const ProfileInfo = (props) => {
                     <img src={ props.profile.photos.large !== null ? props.profile.photos.large : userAvatar }  alt="adm-avatar"/>
                 </div>
                 <h1>{ props.profile.fullName }</h1>
-                <ProfileStatus status={'Hello My Friends!!!'}/>
+                <ProfileStatus status={props.status}/>
 
                 <div className="profile-full-info text-left">
                     <h2>About Me:</h2>
