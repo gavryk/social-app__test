@@ -1,4 +1,5 @@
-import logo from '../../assets/img/logo.png'
+import logo from '../../assets/img/logo2_3.png'
+import logo2 from '../../assets/img/logo2_4.png'
 import "./Header.scss";
 import React from "react";
 import { NavLink } from "react-router-dom";
@@ -7,7 +8,7 @@ const Header = (props) => {
     return(
         <header className='navbar mb-3 p-3 col-12 shadow rounded'>
             <a href="/" className='logo'>
-                <img src={ logo } alt=""/>
+                <img src={ props.appTheme ? logo2 : logo } alt=""/>
             </a>
             <div className="login-block">
                 { props.isAuth
