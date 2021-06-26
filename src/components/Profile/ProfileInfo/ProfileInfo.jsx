@@ -28,7 +28,8 @@ const ProfileInfo = (props) => {
                     <img src={ props.profile.photos.large !== null ? props.profile.photos.large : userAvatar }  alt="adm-avatar"/>
                 </div>
                 <h1>{ props.profile.fullName }</h1>
-                <ProfileStatus status={props.status}/>
+
+                <ProfileStatus status={props.status} updateStatus={ props.updateStatus } />
 
                 <div className="profile-full-info text-left">
                     <h2>About Me:</h2>
@@ -38,7 +39,7 @@ const ProfileInfo = (props) => {
                         <ul className='soc-links'>
                             {
                                 social.map(contact => {
-                                    return contact.link ? <li><a href={ contact.link }>{ contact.name }</a></li> : ''
+                                    return contact.link ? <li key={contact.id} ><a href={ contact.link }>{ contact.name }</a></li> : ''
                                 })
                             }
                         </ul>
