@@ -14,7 +14,6 @@ import News from "./components/News/News";
 import Login from "./components/Login/Login";
 
 const App = (props) => {
-
     return (
         <div className={`app-wrapper ${props.appTheme ? 'dark' : 'light'}`}>
             <div className="container-md">
