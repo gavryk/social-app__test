@@ -1,6 +1,5 @@
 import React from "react";
 import './Settings.scss'
-import {Redirect} from "react-router-dom";
 
 const Settings = (props) => {
 
