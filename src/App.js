@@ -9,11 +9,14 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import MusicContainer from "./components/Music/MusicContainer";
 import SettingsContainer from "./components/Settings/SettingsContainer";
-import {connect} from "react-redux";
+import {connect, shallowEqual} from "react-redux";
 import News from "./components/News/News";
 import Login from "./components/Login/Login";
 
+
 const App = (props) => {
+   
+
     return (
         <div className={`app-wrapper ${props.appTheme ? 'dark' : 'light'}`}>
             <div className="container-md">
