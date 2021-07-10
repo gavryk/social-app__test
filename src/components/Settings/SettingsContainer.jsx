@@ -8,10 +8,7 @@ import {compose} from "redux";
 class SettingsContainer extends React.Component {
     render() {
         return (
-            <Settings
-                {...this.props}
-                appTheme={this.props.appTheme}
-            />
+            <Settings {...this.props} appTheme={this.props.appTheme} />
         )
 
     }

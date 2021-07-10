@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import {Route, Switch} from 'react-router-dom'
+import { Route, Switch  } from 'react-router-dom'
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
