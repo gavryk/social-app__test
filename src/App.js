@@ -9,7 +9,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import MusicContainer from "./components/Music/MusicContainer";
 import SettingsContainer from "./components/Settings/SettingsContainer";
-import {connect, shallowEqual} from "react-redux";
+import {connect} from "react-redux";
 import News from "./components/News/News";
 import Login from "./components/Login/Login";
 
