@@ -1,6 +1,7 @@
 import {loadTheme} from "../api/localStorage";
 
 const TOGGLE_THEME = 'TOGGLE_THEME';
+const THEME_NAME = 'THEME_NAME';
 
 let initialState = {
     themeDark: loadTheme()
@@ -23,7 +24,6 @@ export const toggleAppTheme = () => {
         type: TOGGLE_THEME
     }
 }
-
 
 
 export default settingsReducer;
