@@ -2,7 +2,6 @@ import React from "react";
 import {connect} from "react-redux";
 import {artistSearchText, getMusicSearch, getMusicThunk, setIsFetching, setMusic} from "../../redux/music-reducer";
 import Musics from "./Musics";
-import {getMusic} from "../../api/api";
 import Loader from "../Loader/Loader";
 
 class MusicContainer extends React.Component {

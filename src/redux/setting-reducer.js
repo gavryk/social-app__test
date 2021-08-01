@@ -1,7 +1,6 @@
 import {loadTheme} from "../api/localStorage";
 
 const TOGGLE_THEME = 'TOGGLE_THEME';
-const THEME_NAME = 'THEME_NAME';
 
 let initialState = {
     themeDark: loadTheme()

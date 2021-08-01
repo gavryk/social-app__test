@@ -1,6 +1,5 @@
 import React from "react";
 import './Music.scss'
-import {getMusic} from "../../api/api";
 
 const Musics = (props) => {
 

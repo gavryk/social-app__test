@@ -25,7 +25,7 @@ compose(
     withAuthRedirectComponent
 )(SettingsContainer)
 
-let AutRedirectComponent = withAuthRedirectComponent(SettingsContainer);
+// let AutRedirectComponent = withAuthRedirectComponent(SettingsContainer);
 
 export default compose(
     connect(mapStateToProps, {toggleAppTheme}),

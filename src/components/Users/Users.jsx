@@ -2,7 +2,7 @@ import userAvatar from "../../assets/img/user-avatar.png";
 import React from "react";
 import './Users.scss';
 import {NavLink} from "react-router-dom";
-import {userAPI} from "../../api/api";
+import Loader from "../Loader/Loader";
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
@@ -33,7 +33,7 @@ const Users = (props) => {
                 {
                     props.users.map((user) =>
                         <div key={ user.id } className='user card col-lg-4 col-md-6 col-xs-12  mb-4 min-h-100'>
-                            <NavLink to={ '/profile/' + user.id }>
+                            <NavLink to={`/profile/${ user.id }` }>
                                 <img src={user.photos.large !== null ? user.photos.large : userAvatar} className='card-img-top img-fluid img-thumbnail' alt=""/>
                             </NavLink>
                             <div className="card-body text-center">
@@ -46,7 +46,9 @@ const Users = (props) => {
                                             ? props.followThunk(user.id)
                                             : props.unFollowThunk(user.id)
                                     }}
-                                    className={`btn ${!user.followed ? 'btn-success' : 'btn-danger'}`}>{!user.followed ? 'Fallow' : 'Unfollow'}
+                                    className={`btn ${!user.followed ? 'btn-success' : 'btn-danger'}`}
+                                >
+                                    {!user.followed ? 'Follow' : 'Unfollow'}
                                 </button>
                             </div>
                         </div>

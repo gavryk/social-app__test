@@ -1,49 +1,39 @@
 import React from "react";
 
-class ProfileStatus extends React.Component {
-    state = {
-        editMode: false,
-        status: this.props.status
+const ProfileStatus = (props) => {
+    const [editMode, setEditMode] = React.useState(false);
+    const [status, setStatus] = React.useState(props.status);
+
+    function activeEditMode() {
+        setEditMode(true);
     }
 
-    activeEditMode = () => {
-        this.setState( {
-            editMode: true
-        } )
+    function deactivateEditMode() {
+        setEditMode(false);
+        props.updateStatus(status);
     }
 
-    deactivateEditMode = () => {
-        this.setState( {
-            editMode: false
-        } );
-        this.props.updateStatus(this.props.status);
+    function onStatusChange(e) {
+        setStatus(e.target.value);
     }
 
-    onStatusChange = (e) => {
-        this.setState({
-            status: e.currentTarget.value
-        })
-    }
-
-    render() {
-       return (
-           <div>
-               { !this.state.editMode
-                   ? <div>
-                       <h3 onDoubleClick={this.activeEditMode}>{this.props.status}</h3>
-                    </div>
-                   : <div>
-                       <input
-                           onChange={ this.onStatusChange }
-                           autoFocus={true}
-                           onBlur={this.deactivateEditMode}
-                           value={this.state.status}
-                       />
-                    </div>
-               }
-           </div>
-       )
-   }
+    return (
+        <div>
+            { !editMode
+                ? <div>
+                    <h3 onDoubleClick={activeEditMode}>{props.status}</h3>
+                </div>
+                : <div>
+                    <input
+                        onChange={ onStatusChange }
+                        autoFocus={true}
+                        onBlur={deactivateEditMode}
+                        value={status}
+                    />
+                </div>
+            }
+        </div>
+    )
 }
 
 export default ProfileStatus;
