@@ -16,7 +16,6 @@ const ProfileStatus = (props) => {
     function onStatusChange(e) {
         setStatus(e.target.value);
     }
-
     return (
         <div>
             { !editMode
