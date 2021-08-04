@@ -7,6 +7,26 @@
       cursor: pointer;
     }
   }
+  .search-block {
+    height: 30px;
+    outline: none;
+    input {
+      outline: none;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #fff;
+      color: #fff;
+    }
+    .button {
+      background: transparent;
+      border: none;
+      svg {
+        path {
+          fill: #fff;
+        }
+      }
+    }
+  }
   .users {
     .user {
       p {
@@ -19,8 +39,4 @@
       }
     }
   }
-}
-
-.loader-btn {
-
 }
