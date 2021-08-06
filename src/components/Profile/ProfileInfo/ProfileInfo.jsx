@@ -31,7 +31,7 @@ const ProfileInfo = (props) => {
 
                 <ProfileStatus status={props.status} updateStatus={ props.updateStatus } />
 
-                <div className="profile-full-info text-left">
+                <div className="profile-full-info text-start">
                     <h2>About Me:</h2>
                     <div className="info">
                         <p>{ props.profile.aboutMe }</p>

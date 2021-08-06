@@ -7,15 +7,15 @@ const Settings = (props) => {
             <h1 className='title pb-2 border-bottom'>Settings</h1>
             <div className="theme-settings">
                 <h3>Theme Color: { props.appTheme ? 'Dark' : 'Light' }</h3>
-                <div className="custom-control custom-switch">
+                <div className="form-check form-switch">
                     <input
                         checked={props.appTheme}
                         onChange={props.toggleAppTheme}
                         type="checkbox"
-                        className="custom-control-input"
+                        className="form-check-input"
                         id="customSwitch1"
                     />
-                    <label className="custom-control-label" htmlFor="customSwitch1">
+                    <label className="form-check-label" for="customSwitch1">
 
                     </label>
                 </div>

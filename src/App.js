@@ -19,7 +19,7 @@ const App = (props) => {
 
     return (
         <div className={`app-wrapper ${props.appTheme ? 'dark' : 'light'}`}>
-            <div className="container-md">
+            <div className="container">
                 <div className="row justify-content-between">
                     <HeaderContainer />
                     <NavbarContainer />
