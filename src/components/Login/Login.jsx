@@ -1,24 +1,17 @@
 import React from "react";
 import style from './Login.module.scss'
 import {Field, reduxForm} from "redux-form";
+import {CheckBox, Input} from "../FormControls/FormControls";
+import {requiredField} from "../../utils/validators/validator";
 
 
 const LoginForm = (props) => {
     return (
         <div className={`${style.formWrapper} d-flex justify-content-center align-items-center`}>
             <form onSubmit={ props.handleSubmit } className='w-50'>
-                <div className="form-floating mb-3">
-                    <Field component={'input'} type={"text"} name={'login'} className='form-control' id="exampleInputLogin1" placeholder='Login'/>
-                    <label htmlFor="exampleInputLogin1" className={style.label}>Login</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <Field component={'input'} type={"password"} name={'password'} className="form-control" id="exampleInputPassword1" placeholder="Password"/>
-                    <label htmlFor="exampleInputPassword1" className={style.label}>Password</label>
-                </div>
-                <div className="mb-3 form-check">
-                    <Field component={'input'} type={"checkbox"} name={'remember'} className="form-check-input" id="exampleCheck1"/>
-                    <label htmlFor="exampleCheck1">Remember Me</label>
-                </div>
+                <Field validate={[requiredField]} component={ Input } type="text" name='login' className='form-control mb-3' id="exampleInputLogin1" placeholder='Login'/>
+                <Field validate={[requiredField]} component={ Input } type="password" name='password' className="form-control mb-3" id="exampleInputPassword1" placeholder="Password"/>
+                <Field component={ CheckBox } type={"checkbox"} name={'remember'} className="form-check-input" id="exampleCheck1" placeholder="Remember Me"/>
                 <div className='text-center'>
                     <button type="submit" className="btn btn-success text-center">Login</button>
                 </div>
