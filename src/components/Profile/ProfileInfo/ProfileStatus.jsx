@@ -23,12 +23,15 @@ const ProfileStatus = (props) => {
                     <h3 onDoubleClick={activeEditMode}>{props.status || '----'}</h3>
                 </div>
                 : <div>
-                    <input
-                        onChange={ onStatusChange }
-                        autoFocus={true}
-                        onBlur={deactivateEditMode}
-                        value={status}
-                    />
+                    <form>
+                        <input
+                            className='form-control w-25 m-auto'
+                            onChange={ onStatusChange }
+                            autoFocus={true}
+                            onBlur={deactivateEditMode}
+                            value={status}
+                        />
+                    </form>
                 </div>
             }
         </div>

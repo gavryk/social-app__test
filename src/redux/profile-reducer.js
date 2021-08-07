@@ -1,8 +1,6 @@
 import {profileAPI, userAPI} from "../api/api";
 
 const ADD_POST = 'ADD_POST',
-    UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT',
-    FOCUS_NEW_POST_AREA = 'FOCUS_NEW_POST_AREA',
     SET_USER_PROFILE = 'SET_USER_PROFILE',
     SET_FETCHING = 'SET_FETCHING',
     SET_STATUS = 'SET_STATUS';
@@ -28,27 +26,14 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST: //ADD POST FOR PROFILE POSTS
             let post = {
                 id: 5,
-                message: state.newPostText,
+                message: action.newPost,
                 like: 0
             }
             stateCopy = {
                 ...state,
-                newPostText: '',
                 posts: [...state.posts, post]
             }
             return stateCopy;
-        case UPDATE_NEW_POST_TEXT: //{type: 'UPDATE_NEW_POST_TEXT', newText: 'text'}
-            //NEW POST FOR PROFILE POSTS
-            stateCopy = {
-                ...state,
-                newPostText: action.newText
-            }
-            return stateCopy;
-        case FOCUS_NEW_POST_AREA:
-            return {
-                ...state,
-                newPostText: ''
-            }
         case SET_USER_PROFILE:
             return {
                 ...state,
@@ -70,20 +55,10 @@ const profileReducer = (state = initialState, action) => {
 };
 
 //ACTIONS
-export const addPostActionCreator = () => {
+export const addPostActionCreator = (post) => {
     return {
-        type: ADD_POST
-    }
-}
-export const updatePostActionCreator = (message) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: message
-    }
-}
-export const onFocusActionCreator = () => {
-    return {
-        type: FOCUS_NEW_POST_AREA
+        type: ADD_POST,
+        newPost: post
     }
 }
 export const setUserProfile = (profile) => {

@@ -1,46 +1,40 @@
 import React from "react";
 import './MyPosts.scss'
 import Post from "./Post/Post";
+import {Field, reduxForm} from "redux-form";
 
 const MyPosts = (props) => {
     let posts = props.posts.map((post) => {
         return <Post message={post.message} key={post.id} like={post.like}/>
     })
 
-    let newPostEl = React.createRef();
-
-    let onAddPost = () => {
-        props.addPost();
+    let onAddPost = (post) => {
+        props.addPost(post.newPost);
     };
-
-    let onPostChanges = (e) => {
-        let text = e.target.value;
-        props.updateNewPostText(text);
-    };
-
-    let onFocus = () => {
-        props.onFocusNewPostArea();
-    }
 
     return(
         <div className='posts__wrapper'>
             <h2>My Posts</h2>
-            <div className="post-input">
-                <textarea
-                    onFocus={ onFocus }
-                    onChange={ onPostChanges }
-                    className="form-control form-control-lg h-25"
-                    placeholder="Add New Post"
-                    ref={ newPostEl }
-                    value={props.newPostText}
-                />
-                <button className='btn btn-success' onClick={ onAddPost }>Add Post</button>
-            </div>
+            <AddPostForm onSubmit={ onAddPost }/>
             <div className="posts-output pt-3">
                 { posts }
             </div>
         </div>
     )
 }
+
+const MyPost = (props) => {
+    return (
+        <form onSubmit={ props.handleSubmit } className="post-input">
+            <div className='form-floating'>
+                <Field component='textarea' name='newPost' placeholder='Add New Post' className='form-control form-control-lg h-25' id='addNewPost' />
+                <label htmlFor="addNewPost" className='newPostLabel'>Add New Post</label>
+            </div>
+            <button className='btn btn-success'>Add Post</button>
+        </form>
+    )
+}
+
+const AddPostForm = reduxForm({form: 'add-post-form'})(MyPost);
 
 export default MyPosts;
