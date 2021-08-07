@@ -1,3 +1,15 @@
 a {
   text-decoration: none;
 }
+
+.messages {
+  .new-message-input {
+    #addNewMsg {
+      color: #000;
+      height: 100px;
+    }
+    .newMsgLabel {
+      color: #000;
+    }
+  }
+}

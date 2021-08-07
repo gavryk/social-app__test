@@ -1,6 +1,4 @@
-const ADD_MESSAGE = 'ADD_MESSAGE',
-    UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT',
-    FOCUS_TEXT_AREA = 'FOCUS_TEXT_AREA';
+const ADD_MESSAGE = 'ADD_MESSAGE';
 
 let initialState = {
     dialogs: [
@@ -16,8 +14,7 @@ let initialState = {
         {id: 3, message: 'Yo'},
         {id: 4, message: 'Hello'},
         {id: 5, message: 'What?'}
-    ],
-    newMessage: 'New Message'
+    ]
 }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -25,44 +22,21 @@ const dialogsReducer = (state = initialState, action) => {
         case ADD_MESSAGE: //ADD MESSAGE FOR DIALOG PAGE
             let msg = {
                 id: 10,
-                message: state.newMessage
+                message: action.newMsg
             }
             return {
                 ...state,
                 messages: [...state.messages, msg],
-                newMessage: '',
-            }
-        case UPDATE_NEW_MESSAGE_TEXT: //NEW MESSAGE FOR DIALOG PAGE
-            return {
-                ...state,
-                newMessage: action.newMsg
-            };
-        case FOCUS_TEXT_AREA:
-            return {
-                ...state,
-                newMessage: ''
             }
         default:
             return state;
     }
 };
 
-export const addMessageActionCreator = () => {
+export const addMessageActionCreator = (msg) => {
     return {
         type: ADD_MESSAGE,
-    }
-}
-
-export const updateMessageActionCreator = (message) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        newMsg: message
-    }
-}
-
-export const focusAreaActionCreator = () => {
-    return {
-        type: FOCUS_TEXT_AREA,
+        newMsg: msg
     }
 }
 

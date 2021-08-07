@@ -1,4 +1,4 @@
-import {addMessageActionCreator, focusAreaActionCreator, updateMessageActionCreator} from "../../redux/dialogs-reducer";
+import {addMessageActionCreator} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
 import {withAuthRedirectComponent} from "../../hoc/withAuthRedirect";
@@ -12,14 +12,8 @@ let mapStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
     return {
-        addMsg: () => {
-            dispatch(addMessageActionCreator());
-        },
-        updateMsgText: (text) => {
-            dispatch(updateMessageActionCreator(text));
-        },
-        onFocus: () => {
-            dispatch(focusAreaActionCreator());
+        addMsg: (msg) => {
+            dispatch(addMessageActionCreator(msg));
         }
     }
 }
