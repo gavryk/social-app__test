@@ -3,6 +3,8 @@ import './Dialogs.scss'
 import DialogItem from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import {Field, reduxForm} from "redux-form";
+import {requiredField} from "../../utils/validators/validator";
+import {TextArea} from "../FormControls/FormControls";
 
 const Dialogs = (props) => {
     let state = props.dialogsPage
@@ -40,8 +42,14 @@ const AddMessageForm = (props) => {
     return (
         <form className="new-message-input" onSubmit={ props.handleSubmit }>
             <div className="form-floating">
-                <Field component='textarea' name='newMessageBody' placeholder='Add New Message' className='form-control' id='addNewMsg'/>
-                <label htmlFor="addNewMsg" className='newMsgLabel'>Add New Message</label>
+                <Field
+                    validate={[requiredField]}
+                    component={ TextArea }
+                    name='newMessageBody'
+                    placeholder='Add New Message'
+                    className='form-control'
+                    id='addNewMsg'
+                />
             </div>
             <div className="btn-wrapper text-center">
                 <button type='submit' className='btn btn-success mt-2'>Add Message</button>
