@@ -6,6 +6,7 @@ import {withRouter} from "react-router-dom";
 import Loader from "../Loader/Loader";
 import {compose} from "redux";
 import {getAuth} from "../../redux/auth-reducer";
+import {withAuthRedirectComponent} from "../../hoc/withAuthRedirect";
 
 class ProfileContainer extends React.Component {
 
@@ -46,5 +47,5 @@ export default compose(
             getAuth
         }),
         withRouter,
-        // withAuthRedirectComponent
+        withAuthRedirectComponent
     )(ProfileContainer);

@@ -3,8 +3,6 @@ import logo2 from '../../assets/img/logo2_4.png'
 import "./Header.scss";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import {connect} from "react-redux";
-import {logout} from "../../redux/auth-reducer";
 
 const Header = (props) => {
     return(
@@ -14,11 +12,11 @@ const Header = (props) => {
             </a>
             <div className="login-block">
                 { props.isAuth
-                    ? <h5 className='m-0 p-0'>{ props.login } / <button className='btn btn-login'>Logout</button></h5>
+                    ? <h5 className='m-0 p-0'>{ props.login } / <button className='btn btn-login' onClick={ props.logout }>Logout</button></h5>
                     : <NavLink to='/login'><button className='btn btn-login'>Login</button></NavLink>
                 }
             </div>
         </header>
     )
 }
-export default connect(null, { logout })(Header);
+export default Header;
