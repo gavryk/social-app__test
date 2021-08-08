@@ -15,6 +15,9 @@ const LoginForm = (props) => {
                 <Field validate={[requiredField]} component={ Input } type="email" name='email' className='form-control mb-3' id="exampleInputLogin1" placeholder='Email'/>
                 <Field validate={[requiredField]} component={ Input } type="password" name='password' className="form-control mb-3" id="exampleInputPassword1" placeholder="Password"/>
                 <Field component={ CheckBox } type={"checkbox"} name={'remember'} className="form-check-input" id="exampleCheck1" placeholder="Remember Me"/>
+
+                {props.error && <h4 className={`${style.dangerMsg} text-danger p-1 mt-3 mb-3`}> { props.error }</h4>}
+
                 <div className='text-center'>
                     <button type="submit" className="btn btn-success text-center">Login</button>
                 </div>
@@ -40,7 +43,7 @@ const Login = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
     }
 }
 

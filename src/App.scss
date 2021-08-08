@@ -31,8 +31,18 @@ img {
 
 .app-wrapper {
   transition: .4s ease-in-out;
+  &.light {
+    label {
+      color: #000;
+    }
+  }
   &.dark {
     background: $dark_color;
+    .form-check {
+      label {
+        color: #fff;
+      }
+    }
     a {
       color: $dark_main-color;
     }

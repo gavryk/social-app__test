@@ -43,7 +43,6 @@ export const Input = ({input, meta, placeholder, id, className, type}) => {
 }
 
 export const CheckBox = ({input, placeholder, id, className, type}) => {
-
     return (
         <div className="form-check">
             <input
@@ -53,7 +52,7 @@ export const CheckBox = ({input, placeholder, id, className, type}) => {
                 className={ className }
                 id={ id }
             />
-            <label className='text-white' htmlFor={ id }>{ placeholder }</label>
+            <label htmlFor={ id }>{ placeholder }</label>
         </div>
     )
 }
