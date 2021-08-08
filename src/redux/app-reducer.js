@@ -1,3 +1,5 @@
+import {getAuth} from "./auth-reducer";
+
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 
 let initialState = {
@@ -22,9 +24,12 @@ export const initializedSuccess = () => {
     }
 }
 
-export const initialize = () => {
+export const initializeApp = () => {
     return(dispatch) => {
-
+        let authPromise = dispatch(getAuth());
+        authPromise.then(() => {
+            dispatch(initializedSuccess());
+        })
     }
 }
 

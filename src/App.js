@@ -12,64 +12,69 @@ import SettingsContainer from "./components/Settings/SettingsContainer";
 import {connect} from "react-redux";
 import News from "./components/News/News";
 import Login from "./components/Login/Login";
-import {getAuth} from "./redux/auth-reducer";
 import {compose} from "redux";
+import {initializeApp} from "./redux/app-reducer";
+import Loader from "./components/Loader/Loader";
 
 
 class App extends React.Component {
     componentDidMount() {
-        this.props.getAuth();
+        this.props.initializeApp();
     }
 
     render() {
-        return (
-            <div className={`app-wrapper ${this.props.appTheme ? 'dark' : 'light'}`}>
-                <div className="container">
-                    <div className="row justify-content-between">
-                        <HeaderContainer/>
-                        <NavbarContainer/>
-                        <div className="main-content shadow rounded">
-                            <Switch>
-                                <Route path='/profile/:userId?'>
-                                    <ProfileContainer/>
-                                </Route>
-                                <Route path='/dialogs'>
-                                    <DialogsContainer/>
-                                </Route>
-                                <Route path='/news'>
-                                    <News/>
-                                </Route>
-                                <Route path='/music'>
-                                    <MusicContainer/>
-                                </Route>
-                                <Route path='/settings'>
-                                    <SettingsContainer/>
-                                </Route>
-                                <Route path='/friends'>
-                                    <FriendsContainer/>
-                                </Route>
-                                <Route path='/users'>
-                                    <UsersContainer/>
-                                </Route>
-                                <Route path='/login'>
-                                    <Login/>
-                                </Route>
-                            </Switch>
+        if(!this.props.initialized) {
+            return <Loader/>
+        } else {
+            return(
+                <div className={`app-wrapper ${this.props.appTheme ? 'dark' : 'light'}`}>
+                    <div className="container">
+                        <div className="row justify-content-between">
+                            <HeaderContainer/>
+                            <NavbarContainer/>
+                            <div className="main-content shadow rounded">
+                                <Switch>
+                                    <Route path='/profile/:userId?'>
+                                        <ProfileContainer/>
+                                    </Route>
+                                    <Route path='/dialogs'>
+                                        <DialogsContainer/>
+                                    </Route>
+                                    <Route path='/news'>
+                                        <News/>
+                                    </Route>
+                                    <Route path='/music'>
+                                        <MusicContainer/>
+                                    </Route>
+                                    <Route path='/settings'>
+                                        <SettingsContainer/>
+                                    </Route>
+                                    <Route path='/friends'>
+                                        <FriendsContainer/>
+                                    </Route>
+                                    <Route path='/users'>
+                                        <UsersContainer/>
+                                    </Route>
+                                    <Route path='/login'>
+                                        <Login/>
+                                    </Route>
+                                </Switch>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        );
+            )
+        }
     }
 }
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
-        appTheme: state.settingsPage.themeDark
+        appTheme: state.settingsPage.themeDark,
+        initialized: state.app.initialized
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {getAuth}),
-    withRouter
-)(App);
+    withRouter,
+    connect(mapStateToProps, { initializeApp }))(App);

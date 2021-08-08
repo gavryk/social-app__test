@@ -8,8 +8,10 @@ import musicReducer from "./music-reducer";
 import settingsReducer from "./setting-reducer";
 import { reducer as formReducer } from 'redux-form'
 import thunkMiddleware from "redux-thunk";
+import appReducer from "./app-reducer";
 
 let reducers = combineReducers({
+    app: appReducer,
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     friendsPage: friendsReducer,
