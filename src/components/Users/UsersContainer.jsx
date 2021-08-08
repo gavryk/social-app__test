@@ -8,7 +8,6 @@ import {
     toggleFollow, toggleFollowingProgress, unFollowThunk,
 } from "../../redux/users-reducer";
 import Loader from "../Loader/Loader";
-import {withAuthRedirectComponent} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
 class UsersContainer extends React.Component {
