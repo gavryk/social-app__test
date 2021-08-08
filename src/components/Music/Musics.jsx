@@ -1,24 +1,18 @@
 import React from "react";
 import './Music.scss'
+import {Field, reduxForm} from "redux-form";
+import {Input} from "../FormControls/FormControls";
 
 const Musics = (props) => {
 
-    let newArtist = React.createRef();
-
-    let onSearchChanges = (e) => {
-        let text = e.target.value;
-        props.artistSearchText(text);
+    let onSearchChanges = (value) => {
+        props.getMusicSearch(value.search)
     }
 
     return (
         <div>
             <h1 className='title pb-2 border-bottom'>Music</h1>
-            <div className="search-input text-center">
-                <input onChange={ onSearchChanges } ref={newArtist} value={ props.searchText } className="form-control mr-sm-2 mb-2"/>
-                <button onClick={ () => {
-                    props.getMusicSearch(props.searchText)
-                } } className="btn btn-outline-success my-2 my-sm-0">Search</button>
-            </div>
+            <SearchMusicForm onSubmit={ onSearchChanges }/>
             <div className="music-wrapper row pt-2">
                 {
                     props.musics.map((music) => {
@@ -37,5 +31,23 @@ const Musics = (props) => {
         </div>
     )
 }
+
+const SearchMusic = (props) => {
+    return (
+        <form onSubmit={ props.handleSubmit } className="search-input text-center">
+            <Field
+                type='text'
+                component={ Input }
+                id='search-music'
+                className="form-control mr-sm-2 mb-2"
+                placeholder='Search...'
+                name='search'
+            />
+            <button className="btn btn-outline-success my-2 my-sm-0">Search</button>
+        </form>
+    )
+}
+
+const SearchMusicForm = reduxForm({form: 'search-music-form'})(SearchMusic);
 
 export default Musics;

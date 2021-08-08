@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {artistSearchText, getMusicSearch, getMusicThunk, setIsFetching, setMusic} from "../../redux/music-reducer";
+import {getMusicSearch, getMusicThunk, setIsFetching, setMusic} from "../../redux/music-reducer";
 import Musics from "./Musics";
 import Loader from "../Loader/Loader";
 
@@ -39,7 +39,6 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
     setMusic,
     setIsFetching,
-    artistSearchText,
     getMusicThunk,
     getMusicSearch
 })(MusicContainer);

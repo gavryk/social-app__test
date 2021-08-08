@@ -1,5 +1,4 @@
 import React from "react";
-import {Field} from "redux-form";
 import style from "../Login/Login.module.scss";
 
 export const TextArea = ({input, meta, placeholder, id, className}) => {
@@ -43,7 +42,7 @@ export const Input = ({input, meta, placeholder, id, className, type}) => {
     )
 }
 
-export const CheckBox = ({input, meta, placeholder, id, className, type}) => {
+export const CheckBox = ({input, placeholder, id, className, type}) => {
 
     return (
         <div className="form-check">
@@ -54,7 +53,7 @@ export const CheckBox = ({input, meta, placeholder, id, className, type}) => {
                 className={ className }
                 id={ id }
             />
-            <label htmlFor={ id }>{ placeholder }</label>
+            <label className='text-white' htmlFor={ id }>{ placeholder }</label>
         </div>
     )
 }

@@ -24,7 +24,7 @@ const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 const Login = () => {
     const onSubmit = (formData) => {
-        console.log(formData);
+
     }
 
     return (

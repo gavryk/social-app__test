@@ -10,8 +10,6 @@ import {
 import Loader from "../Loader/Loader";
 import {withAuthRedirectComponent} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
-import {userAPI} from "../../api/api";
-import axios from "axios";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
