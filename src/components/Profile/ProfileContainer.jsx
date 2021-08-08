@@ -13,7 +13,7 @@ class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId;
         if (!userId) {
-            userId = 12654;
+            userId = this.props.authId;
         }
         this.props.getProfile(userId);
         this.props.getStatus(userId)
@@ -25,7 +25,10 @@ class ProfileContainer extends React.Component {
                 {
                     this.props.isFetching
                         ? <Loader/>
-                        : <Profile { ...this.props } profile={ this.props.profile } status={this.props.status} updateStatus={this.props.updateStatus}/>
+                        : <Profile { ...this.props }
+                                   profile={ this.props.profile }
+                                   status={this.props.status}
+                                   updateStatus={this.props.updateStatus}/>
                 }
             </>
         )
@@ -36,6 +39,8 @@ const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
         status: state.profilePage.status,
+        authId: state.auth.userId,
+        isAuth: state.auth.isAuth
     }
 }
 

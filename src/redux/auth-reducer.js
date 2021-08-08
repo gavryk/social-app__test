@@ -47,7 +47,8 @@ export const login = (email, password, rememberMe) => {
             if (response.data.resultCode === 0) {
                 dispatch(getAuth());
             } else {
-                dispatch(stopSubmit('login', {_error: 'Email Or Password is Wrong!'}));
+                let errormsg = response.data.messages.length > 0 ? response.data.messages[0] : 'Some Error!'
+                dispatch(stopSubmit('login', {_error: errormsg}))
             }
         })
     }
