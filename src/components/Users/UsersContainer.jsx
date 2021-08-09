@@ -9,6 +9,14 @@ import {
 } from "../../redux/users-reducer";
 import Loader from "../Loader/Loader";
 import {compose} from "redux";
+import {
+    getAllUsers,
+    getCurrentPage,
+    getFetching,
+    getFollowingInProgress,
+    getPageSize,
+    getTotalUserCount
+} from "../../redux/users-selectors";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -42,14 +50,16 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUserCount: state.usersPage.totalUserCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
+        users: getAllUsers(state),
+        pageSize: getPageSize(state),
+        totalUserCount: getTotalUserCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getFetching(state),
+        followingInProgress: getFollowingInProgress(state)
     }
 }
+
+
 
 export default compose(connect(mapStateToProps, {
         toggleFollow,
