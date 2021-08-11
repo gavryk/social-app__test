@@ -41,7 +41,7 @@ const Users = (props) => {
                             key={page}
                             onClick={(e) => { props.onChangedPage(page) }}
                             className={`page-item ${props.currentPage === page ? 'currentPage' : ''}`}>
-                            <span className="page-link">{ page }</span>
+                            <span className={`${props.currentPage === page ? 'text-white' : ''}  page-link`}>{ page }</span>
                         </li>
                     })}
                     {/*<li className="page-item"><a className="page-link" href="#">Next</a></li>*/}

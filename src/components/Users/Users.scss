@@ -1,7 +1,12 @@
+@import "../../vars";
+
 .users_wrapper {
   .pagination {
     .currentPage {
       font-weight: 700;
+      span {
+        background: $dark_main-color;
+      }
     }
     .page-link {
       cursor: pointer;
