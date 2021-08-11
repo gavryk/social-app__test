@@ -1,4 +1,5 @@
 import  userAvatar from '../assets/img/user-avatar.png'
+import {userAPI} from "../api/api";
 let SET_FRIENDS = 'SET_FRIENDS';
 
 let initialState = {
