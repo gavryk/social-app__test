@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import React, {useEffect} from "react";
+import React from "react";
 import Users from "./Users";
 import {
     followThunk,
@@ -18,64 +18,62 @@ import {
     getUsersSelector
 } from "../../redux/users-selectors";
 
-export const UsersContainer = (props) => {
-    useEffect(() => {
-        props.getUsers(props.currentPage, props.pageSize);
-    }, [])
-
-    const onChangedPage = (page) => {
-        props.getUsers(page, props.pageSize);
+class UsersContainer extends React.Component {
+    componentDidMount() {
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
-    return (
-        <>
-            { props.isFetching
-                ? <Loader/>
-                :  <Users
-                    totalUserCount={props.totalUserCount}
-                    pageSize={props.pageSize}
-                    currentPage={props.currentPage}
-                    onChangedPage={onChangedPage}
-                    followThunk={props.followThunk}
-                    unFollowThunk={props.unFollowThunk}
-                    users={props.users}
-                    followingInProgress={props.followingInProgress}
-                />
-            }
-        </>
-    )
 
+    onChangedPage = (page) => {
+        this.props.getUsers(page, this.props.pageSize);
+    }
+
+    render() {
+        return (
+            <>
+                { this.props.isFetching
+                    ? <Loader/>
+                    :  <Users
+                        totalUserCount={this.props.totalUserCount}
+                        pageSize={this.props.pageSize}
+                        currentPage={this.props.currentPage}
+                        onChangedPage={this.onChangedPage}
+                        followThunk={this.props.followThunk}
+                        unFollowThunk={this.props.unFollowThunk}
+                        users={this.props.users}
+                        followingInProgress={this.props.followingInProgress}
+                    />
+                }
+            </>
+        )
+    }
 }
 
-// OLD CLASS COMPONENT. I STARTED USE React Hooks
-
-// class UsersContainer extends React.Component {
-//     componentDidMount() {
-//         this.props.getUsers(this.props.currentPage, this.props.pageSize);
-//     }
+// export const UsersContainer = (props) => {
+//     useEffect(() => {
+//         props.getUsers(props.currentPage, props.pageSize);
+//     }, [])
 //
-//     onChangedPage = (page) => {
-//         this.props.getUsers(page, this.props.pageSize);
+//     const onChangedPage = (page) => {
+//         props.getUsers(page, props.pageSize);
 //     }
+//     return (
+//         <>
+//             { props.isFetching
+//                 ? <Loader/>
+//                 :  <Users
+//                     totalUserCount={props.totalUserCount}
+//                     pageSize={props.pageSize}
+//                     currentPage={props.currentPage}
+//                     onChangedPage={onChangedPage}
+//                     followThunk={props.followThunk}
+//                     unFollowThunk={props.unFollowThunk}
+//                     users={props.users}
+//                     followingInProgress={props.followingInProgress}
+//                 />
+//             }
+//         </>
+//     )
 //
-//     render() {
-//         return (
-//             <>
-//                 { this.props.isFetching
-//                     ? <Loader/>
-//                     :  <Users
-//                         totalUserCount={this.props.totalUserCount}
-//                         pageSize={this.props.pageSize}
-//                         currentPage={this.props.currentPage}
-//                         onChangedPage={this.onChangedPage}
-//                         followThunk={this.props.followThunk}
-//                         unFollowThunk={this.props.unFollowThunk}
-//                         users={this.props.users}
-//                         followingInProgress={this.props.followingInProgress}
-//                     />
-//                 }
-//             </>
-//         )
-//     }
 // }
 
 let mapStateToProps = (state) => {
