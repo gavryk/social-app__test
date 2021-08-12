@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import Friends from "./Friends";
 import {setFriends} from "../../redux/friends-reducer";
+import {getFriends} from "../../redux/users-selectors";
 
 class FriendsContainer extends React.Component {
 

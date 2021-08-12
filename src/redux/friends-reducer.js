@@ -1,5 +1,6 @@
 import  userAvatar from '../assets/img/user-avatar.png'
 import {userAPI} from "../api/api";
+import {setIsFetching, setPage, setTotalUserCount, setUsers} from "./users-reducer";
 let SET_FRIENDS = 'SET_FRIENDS';
 
 let initialState = {
