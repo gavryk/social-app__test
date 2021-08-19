@@ -20,10 +20,10 @@ let mapStateToProps = (state) => {
     }
 }
 
-compose(
-    connect(mapStateToProps, {toggleAppTheme}),
-    withAuthRedirectComponent
-)(SettingsContainer)
+// compose(
+//     connect(mapStateToProps, {toggleAppTheme}),
+//     withAuthRedirectComponent
+// )(SettingsContainer)
 
 // let AutRedirectComponent = withAuthRedirectComponent(SettingsContainer);
 
