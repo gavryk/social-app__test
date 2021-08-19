@@ -1,15 +1,15 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import './MyPosts.scss'
 import Post from "./Post/Post";
 import {Field, reduxForm} from "redux-form";
 import {maxLength, requiredField} from "../../../utils/validators/validator";
 import {TextArea} from "../../FormControls/FormControls";
 
-class MyPosts extends React.Component {
+class MyPosts extends PureComponent {
 
-    shouldComponentUpdate(nextProps, nextState) {
-        return nextProps !== this.props || nextState !== this.state;
-    }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     return nextProps !== this.props || nextState !== this.state;
+    // }
 
     render() {
         let posts = this.props.posts.map((post) => {
