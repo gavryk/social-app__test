@@ -11,6 +11,7 @@ class MyPosts extends PureComponent {
     //     return nextProps !== this.props || nextState !== this.state;
     // }
 
+
     render() {
         let posts = this.props.posts.map((post) => {
             return <Post message={post.message} key={post.id} like={post.like}/>
