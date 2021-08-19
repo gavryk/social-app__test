@@ -1,37 +1,29 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import './MyPosts.scss'
 import Post from "./Post/Post";
 import {Field, reduxForm} from "redux-form";
 import {maxLength, requiredField} from "../../../utils/validators/validator";
 import {TextArea} from "../../FormControls/FormControls";
 
-class MyPosts extends PureComponent {
+const MyPosts = React.memo((props) => {
+    let posts = props.posts.map((post) => {
+        return <Post message={post.message} key={post.id} like={post.like}/>
+    })
 
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     return nextProps !== this.props || nextState !== this.state;
-    // }
+    let onAddPost = (post) => {
+        props.addPost(post.newPost);
+    };
 
-
-    render() {
-        let posts = this.props.posts.map((post) => {
-            return <Post message={post.message} key={post.id} like={post.like}/>
-        })
-
-        let onAddPost = (post) => {
-            this.props.addPost(post.newPost);
-        };
-
-        return (
-            <div className='posts__wrapper'>
-                <h2>My Posts</h2>
-                <AddPostForm onSubmit={onAddPost}/>
-                <div className="posts-output pt-3">
-                    {posts}
-                </div>
+    return (
+        <div className='posts__wrapper'>
+            <h2>My Posts</h2>
+            <AddPostForm onSubmit={onAddPost}/>
+            <div className="posts-output pt-3">
+                {posts}
             </div>
-        )
-    }
-}
+        </div>
+    )
+});
 
 let max = maxLength(100);
 
