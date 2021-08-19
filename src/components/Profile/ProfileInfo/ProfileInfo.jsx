@@ -5,6 +5,8 @@ import userAvatar from "../../../assets/img/user-avatar.png";
 import ProfileStatus from './ProfileStatus'
 
 const ProfileInfo = (props) => {
+    let default_img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT2cGUqGnCYT6DxUTYNd8hqbRLcDCZ9c6TsEw&usqp=CAU'
+
     if (!props.profile) {
         return <Loader/>
     }
@@ -20,8 +22,8 @@ const ProfileInfo = (props) => {
 
     return (
         <div>
-            <div className="profile-top-bg">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT2cGUqGnCYT6DxUTYNd8hqbRLcDCZ9c6TsEw&usqp=CAU" alt=""/>
+            <div className="profile-top-bg" style={{backgroundImage: `url(${default_img})`} }>
+
             </div>
             <div className="profile-info text-center">
                 <div className="adm-avatar">
