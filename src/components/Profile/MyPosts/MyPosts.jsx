@@ -5,24 +5,31 @@ import {Field, reduxForm} from "redux-form";
 import {maxLength, requiredField} from "../../../utils/validators/validator";
 import {TextArea} from "../../FormControls/FormControls";
 
-const MyPosts = (props) => {
-    let posts = props.posts.map((post) => {
-        return <Post message={post.message} key={post.id} like={post.like}/>
-    })
+class MyPosts extends React.Component {
 
-    let onAddPost = (post) => {
-        props.addPost(post.newPost);
-    };
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps !== this.props || nextState !== this.state;
+    }
 
-    return(
-        <div className='posts__wrapper'>
-            <h2>My Posts</h2>
-            <AddPostForm onSubmit={ onAddPost }/>
-            <div className="posts-output pt-3">
-                { posts }
+    render() {
+        let posts = this.props.posts.map((post) => {
+            return <Post message={post.message} key={post.id} like={post.like}/>
+        })
+
+        let onAddPost = (post) => {
+            this.props.addPost(post.newPost);
+        };
+
+        return (
+            <div className='posts__wrapper'>
+                <h2>My Posts</h2>
+                <AddPostForm onSubmit={onAddPost}/>
+                <div className="posts-output pt-3">
+                    {posts}
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 let max = maxLength(100);
