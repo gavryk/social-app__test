@@ -28,6 +28,9 @@
   &.haze {
     background-image: url('../../assets/img/haze-weather.jpg');
   }
+  &.thunderstorm {
+    background-image: url('../../assets/img/thunderstorm.jpg');
+  }
   &:after {
     content: '';
     position: absolute;
