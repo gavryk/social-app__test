@@ -70,6 +70,8 @@ const News = () => {
                                 </div>
                                 <div className="weather">
                                     {weather.weather[0].main},
+                                    <h4>Wind Speed</h4>
+                                    <span>{ weather.wind.speed } m/s</span>
                                 </div>
                             </div>
                         </div>
