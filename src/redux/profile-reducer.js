@@ -97,32 +97,29 @@ export const setStatus = (status) => {
 
 //THUNK
 export const getProfile = (userId) => {
-    return(dispatch) => {
+    return async (dispatch) => {
         dispatch(setFetching(true));
-        userAPI.getProfile(userId)
-            .then(response => {
-            dispatch(setFetching(false));
-            dispatch(setUserProfile(response.data));
-        });
+        let response = await userAPI.getProfile(userId);
+
+        dispatch(setFetching(false));
+        dispatch(setUserProfile(response.data));
     }
 }
 
 export const getStatus = (userId) => {
-    return(dispatch) => {
-        profileAPI.getStatus(userId)
-            .then(response => {
-               dispatch(setStatus(response.data));
-            });
+    return async (dispatch) => {
+        let response = await profileAPI.getStatus(userId);
+
+        dispatch(setStatus(response.data));
     }
 }
 export const updateStatus = (status) => {
-    return(dispatch) => {
-        profileAPI.updateStatus(status)
-            .then(response => {
-                if(response.data.resultCode === 0) {
-                    dispatch(setStatus(status));
-                }
-            });
+    return async (dispatch) => {
+        let response = await profileAPI.updateStatus(status);
+
+        if(response.data.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
     }
 }
 

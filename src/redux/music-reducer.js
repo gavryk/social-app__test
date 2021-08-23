@@ -42,25 +42,23 @@ export const setIsFetching = (isFetching) => {
 
 //THUNK
 export const getMusicThunk = () => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setIsFetching(true));
-        getMusic(6, '*')
-            .then(data => {
-                dispatch(setIsFetching(false));
-                let musics = data.data;
-                dispatch(setMusic(musics));
-            })
+        let data = await getMusic(6, '*');
+
+        dispatch(setIsFetching(false));
+        let musics = data.data;
+        dispatch(setMusic(musics));
     }
 }
 export const getMusicSearch = (artistName) => {
-    return(dispatch) => {
+    return async (dispatch) => {
         dispatch(setIsFetching(true));
-        getMusic(6, artistName)
-            .then(data => {
-                dispatch(setIsFetching(false));
-                let musics = data.data;
-                dispatch(setMusic(musics));
-            })
+        let data = await getMusic(6, artistName)
+
+        dispatch(setIsFetching(false));
+        let musics = data.data;
+        dispatch(setMusic(musics));
     }
 }
 
