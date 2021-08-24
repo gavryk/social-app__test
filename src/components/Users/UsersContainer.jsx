@@ -7,7 +7,7 @@ import {
     setPage,
     toggleFollow, toggleFollowingProgress, unFollowThunk,
 } from "../../redux/users-reducer";
-import Loader from "../Loader/Loader";
+import Loader from "../common/Loader/Loader";
 import {compose} from "redux";
 import {
     getCurrentPage,

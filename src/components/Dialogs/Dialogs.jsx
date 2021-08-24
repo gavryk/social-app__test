@@ -4,7 +4,7 @@ import DialogItem from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import {Field, reduxForm} from "redux-form";
 import {requiredField} from "../../utils/validators/validator";
-import {TextArea} from "../FormControls/FormControls";
+import {TextArea} from "../common/FormControls/FormControls";
 
 const Dialogs = (props) => {
     let state = props.dialogsPage

@@ -3,10 +3,10 @@ import Profile from "./Profile";
 import {connect} from "react-redux";
 import {getProfile, getStatus, updateStatus} from "../../redux/profile-reducer";
 import {withRouter} from "react-router-dom";
-import Loader from "../Loader/Loader";
 import {compose} from "redux";
 import {getAuth} from "../../redux/auth-reducer";
 import {withAuthRedirectComponent} from "../../hoc/withAuthRedirect";
+import Loader from "../common/Loader/Loader";
 
 class ProfileContainer extends React.Component {
 

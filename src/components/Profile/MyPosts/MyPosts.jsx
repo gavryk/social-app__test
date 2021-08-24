@@ -3,7 +3,7 @@ import './MyPosts.scss'
 import Post from "./Post/Post";
 import {Field, reduxForm} from "redux-form";
 import {maxLength, requiredField} from "../../../utils/validators/validator";
-import {TextArea} from "../../FormControls/FormControls";
+import {TextArea} from "../../common/FormControls/FormControls";
 
 const MyPosts = React.memo((props) => {
     let posts = props.posts.map((post) => {

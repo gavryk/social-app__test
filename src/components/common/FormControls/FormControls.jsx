@@ -1,5 +1,5 @@
 import React from "react";
-import style from "../Login/Login.module.scss";
+import style from './FormControl.module.scss';
 
 export const TextArea = ({input, meta, placeholder, id, className}) => {
 

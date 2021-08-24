@@ -1,7 +1,7 @@
 import React from "react";
 import './Music.scss'
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../FormControls/FormControls";
+import {Input} from "../common/FormControls/FormControls";
 
 const Musics = (props) => {
 

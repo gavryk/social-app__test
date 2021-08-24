@@ -4,16 +4,11 @@ import './Users.scss';
 import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
+import Paginator from "../common/Paginator/Paginator";
 
-const Users = (props) => {
+const Users = ({ totalUserCount, pageSize, onChangedPage, currentPage, ...props }) => {
     //Search Product Hook
     let [searchValue, setSearchValue] = React.useState('');
-
-    let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
-    }
 
     const changeValue = (event) => {
         setSearchValue(event.target.value);
@@ -33,20 +28,14 @@ const Users = (props) => {
                 </div>
             </div>
 
-            <nav aria-label="page_navigation" className='d-flex justify-content-center p-2'>
-                <ul className="pagination">
-                    {/*<li className="page-item"><a className="page-link" href="#">Previous</a></li>*/}
-                    {pages.map((page) => {
-                        return <li
-                            key={page}
-                            onClick={(e) => { props.onChangedPage(page) }}
-                            className={`page-item ${props.currentPage === page ? 'currentPage' : ''}`}>
-                            <span className={`${props.currentPage === page ? 'text-white' : ''}  page-link`}>{ page }</span>
-                        </li>
-                    })}
-                    {/*<li className="page-item"><a className="page-link" href="#">Next</a></li>*/}
-                </ul>
-            </nav>
+            {/*paginator*/}
+            <Paginator
+                totalUserCount={ totalUserCount }
+                pageSize={ pageSize }
+                onChangedPage={ onChangedPage }
+                currentPage={ currentPage }
+            />
+
             <div className="users row">
                 {
                     users.map((user) =>

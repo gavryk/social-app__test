@@ -14,7 +14,8 @@ import News from "./components/News/News";
 import Login from "./components/Login/Login";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
-import Loader from "./components/Loader/Loader";
+import Loader from "./components/common/Loader/Loader";
+
 
 
 class App extends React.Component {
