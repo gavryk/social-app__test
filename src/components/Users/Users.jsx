@@ -1,10 +1,9 @@
-import userAvatar from "../../assets/img/user-avatar.png";
 import React from "react";
 import './Users.scss';
-import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import Paginator from "../common/Paginator/Paginator";
+import User from "./User/User";
 
 const Users = ({ totalUserCount, pageSize, onChangedPage, currentPage, ...props }) => {
     //Search Product Hook
@@ -39,26 +38,17 @@ const Users = ({ totalUserCount, pageSize, onChangedPage, currentPage, ...props 
             <div className="users row">
                 {
                     users.map((user) =>
-                        <div key={ user.id } className='user card col-lg-4 col-md-6 col-xs-12  mb-4 min-h-100'>
-                            <NavLink to={`/profile/${ user.id }` }>
-                                <img src={user.photos.large !== null ? user.photos.large : userAvatar} className='card-img-top img-fluid img-thumbnail' alt=""/>
-                            </NavLink>
-                            <div className="card-body text-center">
-                                <h5 className="card-title">{ user.name }</h5>
-                                <p className="card-text">{ user.status }</p>
-                                <button
-                                    disabled={props.followingInProgress.some(id => id === user.id)}
-                                    onClick={() => {
-                                        !user.followed
-                                            ? props.followThunk(user.id)
-                                            : props.unFollowThunk(user.id)
-                                    }}
-                                    className={`btn ${!user.followed ? 'btn-success' : 'btn-danger'}`}
-                                >
-                                    {!user.followed ? 'Follow' : 'Unfollow'}
-                                </button>
-                            </div>
-                        </div>
+                        <User
+                            key={ user.id }
+                            id={ user.id }
+                            photos={ user.photos }
+                            name={ user.name }
+                            status={ user.status }
+                            followed={ user.followed }
+                            followingInProgress={ props.followingInProgress }
+                            followThunk={ props.followThunk }
+                            unFollowThunk={ props.unFollowThunk }
+                        />
                     )
                 }
             </div>
