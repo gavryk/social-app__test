@@ -15,7 +15,7 @@ let initialState = {
         // {id: 4, photoUrl: 'https://medicallist.ru/images/myimg/ava2.jpg', followed: true, fullName: 'Jessica D.', status: 'Hello everybody', location: { city: 'Berlin', country: 'Germany'}},
         // {id: 5, photoUrl: 'https://lh3.googleusercontent.com/proxy/hL0ltqwgD9lyoV2p1f2wuOPdcNeWHTPHhyBURTr9PASDsvVAhMWO_Sx3-8x9cZGvjrVUdKkVdLGAV1J2KLnMPOHbh1kVC36RFqwq76g', followed: false, fullName: 'Bob M.', status: 'I need a job!', location: { city: 'New York', country: 'USA'}}
     ],
-    pageSize: 12,
+    pageSize: 15,
     totalUserCount: 0,
     currentPage: 1,
     isFetching: true,

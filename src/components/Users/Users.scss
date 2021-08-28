@@ -45,3 +45,22 @@
     }
   }
 }
+
+.light {
+  .users_wrapper {
+    .search-block {
+      input {
+        border-bottom: 1px solid #333;
+        color: #333;
+      }
+
+      .button {
+        svg {
+          path {
+            fill: #333;
+          }
+        }
+      }
+    }
+  }
+}
