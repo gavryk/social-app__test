@@ -1,13 +1,11 @@
 import React, { Suspense } from 'react';
 import './App.scss';
 import {BrowserRouter, Route, Switch, withRouter} from 'react-router-dom'
-// import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-// import MusicContainer from "./components/Music/MusicContainer";
 import SettingsContainer from "./components/Settings/SettingsContainer";
 import {connect, Provider} from "react-redux";
 import News from "./components/News/News";
@@ -43,7 +41,7 @@ class App extends React.Component {
                                         <ProfileContainer/>
                                     </Route>
                                     <Route path='/dialogs'>
-                                       <Suspense fallback={ <div>Loading...</div> }>
+                                       <Suspense fallback={ <Loader/> }>
                                            <DialogsContainer/>
                                        </Suspense>
                                     </Route>
@@ -51,7 +49,7 @@ class App extends React.Component {
                                         <News/>
                                     </Route>
                                     <Route path='/music'>
-                                        <Suspense fallback={ <div>Loading...</div> }>
+                                        <Suspense fallback={ <Loader/> }>
                                             <MusicContainer/>
                                         </Suspense>
                                     </Route>
