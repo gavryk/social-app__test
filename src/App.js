@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.scss';
 import {BrowserRouter, Route, Switch, withRouter} from 'react-router-dom'
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
+// import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import MusicContainer from "./components/Music/MusicContainer";
+// import MusicContainer from "./components/Music/MusicContainer";
 import SettingsContainer from "./components/Settings/SettingsContainer";
 import {connect, Provider} from "react-redux";
 import News from "./components/News/News";
@@ -16,6 +16,9 @@ import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Loader from "./components/common/Loader/Loader";
 import store from "./redux/store";
+
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const MusicContainer = React.lazy(() => import('./components/Music/MusicContainer'));
 
 
 
@@ -40,13 +43,17 @@ class App extends React.Component {
                                         <ProfileContainer/>
                                     </Route>
                                     <Route path='/dialogs'>
-                                        <DialogsContainer/>
+                                       <Suspense fallback={ <div>Loading...</div> }>
+                                           <DialogsContainer/>
+                                       </Suspense>
                                     </Route>
                                     <Route path='/news'>
                                         <News/>
                                     </Route>
                                     <Route path='/music'>
-                                        <MusicContainer/>
+                                        <Suspense fallback={ <div>Loading...</div> }>
+                                            <MusicContainer/>
+                                        </Suspense>
                                     </Route>
                                     <Route path='/settings'>
                                         <SettingsContainer/>

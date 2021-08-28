@@ -6,7 +6,7 @@ import React from "react";
 const User = ({ id, photos, name, status, followed, ...props }) => {
     return (
         <div className='user card col-lg-4 col-md-6 col-xs-12  mb-4 min-h-100'>
-            <NavLink to={`/profile/${ id }` }>
+            <NavLink to={`/profile/${ id }` } >
                 <img src={photos.large !== null ? photos.large : userAvatar} className='card-img-top img-fluid img-thumbnail' alt=""/>
             </NavLink>
             <div className="card-body text-center">
