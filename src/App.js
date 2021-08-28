@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import {Route, Switch, withRouter} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, withRouter} from 'react-router-dom'
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
@@ -9,12 +9,13 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import MusicContainer from "./components/Music/MusicContainer";
 import SettingsContainer from "./components/Settings/SettingsContainer";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import News from "./components/News/News";
 import Login from "./components/Login/Login";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Loader from "./components/common/Loader/Loader";
+import store from "./redux/store";
 
 
 
@@ -76,6 +77,18 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default compose(
+let AppContainer = compose(
     withRouter,
     connect(mapStateToProps, { initializeApp }))(App);
+
+const MainApp = (props) => {
+    return (
+        <BrowserRouter>
+            <Provider store={ store }>
+                <AppContainer />
+            </Provider>
+        </BrowserRouter>
+    )
+}
+
+export default MainApp;
