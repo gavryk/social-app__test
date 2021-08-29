@@ -4,11 +4,12 @@ import {connect} from "react-redux";
 import {toggleAppTheme} from "../../redux/setting-reducer";
 import {withAuthRedirectComponent} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {saveAvatar} from "../../redux/profile-reducer";
 
 class SettingsContainer extends React.Component {
     render() {
         return (
-            <Settings {...this.props} appTheme={this.props.appTheme} />
+            <Settings {...this.props} saveAvatar={ this.props.saveAvatar } appTheme={this.props.appTheme} />
         )
 
     }
@@ -28,6 +29,6 @@ let mapStateToProps = (state) => {
 // let AutRedirectComponent = withAuthRedirectComponent(SettingsContainer);
 
 export default compose(
-    connect(mapStateToProps, {toggleAppTheme}),
+    connect(mapStateToProps, { toggleAppTheme, saveAvatar }),
     withAuthRedirectComponent
 )(SettingsContainer);

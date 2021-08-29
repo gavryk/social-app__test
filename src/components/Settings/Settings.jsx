@@ -1,7 +1,14 @@
-import React from "react";
-import './Settings.scss'
+import React, {useState} from "react";
+import style from './Settings.module.scss'
 
-const Settings = (props) => {
+const Settings = ({ saveAvatar, ...props }) => {
+
+    const onUserPhoto = (e) => {
+       if (e.target.files.length) {
+           saveAvatar(e.target.files[0]);
+       }
+    }
+
     return (
         <div>
             <h1 className='title pb-2 border-bottom'>Settings</h1>
@@ -21,8 +28,8 @@ const Settings = (props) => {
                 </div>
             </div>
 
-            <h2>Change Profile Avatar</h2>
-            <div className="change-avatar-block">
+            <h2>Profile Settings</h2>
+            <div className={style.changeAvatarBlock}>
                 <label htmlFor='formFile' className="form-label text-white">Add New Avatar</label>
                 <input
                     type='file'
@@ -30,6 +37,7 @@ const Settings = (props) => {
                     placeholder='Add Avatar'
                     className='form-control'
                     id='formFile'
+                    onChange={ onUserPhoto }
                 />
             </div>
         </div>

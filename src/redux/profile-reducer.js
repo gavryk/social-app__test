@@ -4,7 +4,8 @@ const ADD_POST = 'ADD_POST',
     SET_USER_PROFILE = 'SET_USER_PROFILE',
     SET_FETCHING = 'SET_FETCHING',
     SET_STATUS = 'SET_STATUS',
-    DELETE_POST = 'DELETE_POST';
+    DELETE_POST = 'DELETE_POST',
+    SET_PHOTO = 'SET_PHOTO';
 
 let initialState = {
     posts: [
@@ -55,6 +56,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status
             }
+        case SET_PHOTO:
+            return {
+                ...state,
+                profile: { ...state.profile, photos: action.photos }
+            }
         default:
             return state;
     }
@@ -94,6 +100,12 @@ export const setStatus = (status) => {
         status
     }
 }
+export const setPhoto = (photos) => {
+    return {
+        type: SET_PHOTO,
+        photos
+    }
+}
 
 //THUNK
 export const getProfile = (userId) => {
@@ -119,6 +131,16 @@ export const updateStatus = (status) => {
 
         if(response.data.resultCode === 0) {
             dispatch(setStatus(status));
+        }
+    }
+}
+
+export const saveAvatar = (file) => {
+    return async (dispatch) => {
+        let response = await profileAPI.savePhoto(file);
+
+        if(response.data.resultCode === 0) {
+            dispatch(setPhoto(response.data.data.photos));
         }
     }
 }

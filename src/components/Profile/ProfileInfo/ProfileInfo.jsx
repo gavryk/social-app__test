@@ -4,9 +4,8 @@ import userAvatar from "../../../assets/img/user-avatar.png";
 import ProfileStatus from './ProfileStatus'
 import Loader from "../../common/Loader/Loader";
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({saveAvatar, ...props}) => {
     let default_img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT2cGUqGnCYT6DxUTYNd8hqbRLcDCZ9c6TsEw&usqp=CAU'
-    console.log(props.profile);
     if (!props.profile) {
         return <Loader/>
     }
@@ -20,6 +19,12 @@ const ProfileInfo = (props) => {
         )
     }
 
+    let onChangeAvatar = (e) => {
+        if (e.target.files.length) {
+            saveAvatar(e.target.files[0]);
+        }
+    }
+
     return (
         <div>
             <div className="profile-top-bg" style={{backgroundImage: `url(${default_img})`} }>
@@ -28,6 +33,19 @@ const ProfileInfo = (props) => {
             <div className="profile-info text-center">
                 <div className="adm-avatar">
                     <img src={ props.profile.photos.large !== null ? props.profile.photos.large : userAvatar }  alt="adm-avatar"/>
+                    {
+                        props.isOwner &&
+                        <div className='upload-photo'>
+                            <input
+                                type='file'
+                                name='newAvatar'
+                                placeholder='Add Avatar'
+                                className='form-control'
+                                id='formFile'
+                                onChange={ onChangeAvatar }
+                            />
+                        </div>
+                    }
                 </div>
                 <h1>{ props.profile.fullName }</h1>
 
