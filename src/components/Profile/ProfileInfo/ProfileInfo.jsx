@@ -3,6 +3,9 @@ import './ProfileInfo.scss'
 import userAvatar from "../../../assets/img/user-avatar.png";
 import ProfileStatus from './ProfileStatus'
 import Loader from "../../common/Loader/Loader";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCamera} from "@fortawesome/free-solid-svg-icons";
+
 
 const ProfileInfo = ({saveAvatar, ...props}) => {
     let default_img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT2cGUqGnCYT6DxUTYNd8hqbRLcDCZ9c6TsEw&usqp=CAU'
@@ -36,12 +39,15 @@ const ProfileInfo = ({saveAvatar, ...props}) => {
                     {
                         props.isOwner &&
                         <div className='upload-photo'>
+                            <label htmlFor="changePhoto" className='d-flex justify-content-center align-items-center'>
+                                <FontAwesomeIcon icon={faCamera} />
+                            </label>
                             <input
                                 type='file'
                                 name='newAvatar'
                                 placeholder='Add Avatar'
                                 className='form-control'
-                                id='formFile'
+                                id='changePhoto'
                                 onChange={ onChangeAvatar }
                             />
                         </div>
