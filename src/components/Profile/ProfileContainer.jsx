@@ -10,13 +10,22 @@ import Loader from "../common/Loader/Loader";
 
 class ProfileContainer extends React.Component {
 
-    componentDidMount() {
+    refreshProfile() {
         let userId = this.props.match.params.userId;
         if (!userId) {
             userId = this.props.authId;
         }
         this.props.getProfile(userId);
         this.props.getStatus(userId)
+    }
+
+    componentDidMount() {
+        this.refreshProfile();
+    }
+    componentDidUpdate( prevProps, prevState, snapshot ) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId ) {
+            this.refreshProfile();
+        }
     }
 
     render() {

@@ -6,7 +6,7 @@ import Loader from "../../common/Loader/Loader";
 
 const ProfileInfo = (props) => {
     let default_img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT2cGUqGnCYT6DxUTYNd8hqbRLcDCZ9c6TsEw&usqp=CAU'
-
+    console.log(props.profile);
     if (!props.profile) {
         return <Loader/>
     }
