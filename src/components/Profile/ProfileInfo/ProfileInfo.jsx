@@ -12,15 +12,6 @@ const ProfileInfo = ({saveAvatar, ...props}) => {
     if (!props.profile) {
         return <Loader/>
     }
-    let social = [];
-    for( let key in props.profile.contacts) {
-        social.push(
-            {
-                name: key,
-                link: props.profile.contacts[key]
-            }
-        )
-    }
 
     let onChangeAvatar = (e) => {
         if (e.target.files.length) {
@@ -57,26 +48,40 @@ const ProfileInfo = ({saveAvatar, ...props}) => {
 
                 <ProfileStatus status={props.status} updateStatus={ props.updateStatus } />
 
-                <div className="profile-full-info text-start">
-                    <h2>About Me:</h2>
-                    <div className="info">
-                        <p>{ props.profile.aboutMe }</p>
-                        <h3>Contacts:</h3>
-                        <ul className='soc-links'>
-                            {
-                                social.map(contact => {
-                                    return contact.link ? <li key={contact.id} ><a href={ contact.link }>{ contact.name }</a></li> : ''
-                                })
-                            }
-                        </ul>
-                        <h3>Looking For A Job:</h3>
-                        {
-                            props.profile.lookingForAJob ? 'Yes' : 'No'
-                        }
-                        <p>{ props.profile.lookingForAJobDescription }</p>
-                    </div>
-                </div>
+                <ProfileData profile={ props.profile }/>
             </div>
+        </div>
+    )
+}
+
+const ProfileData = ({ profile }) => {
+    return (
+        <div className="profile-full-info text-start">
+            <h2>About Me:</h2>
+            <div className="info">
+                <p>{ profile.aboutMe }</p>
+                <h3>Contacts:</h3>
+                <ul className='soc-links'>
+                    {
+                        Object.keys(profile.contacts).map(key => {
+                            return <SocialLinks key={ key } title={ key } value={ profile.contacts[key] }/>
+                        })
+                    }
+                </ul>
+                <h3>Looking For A Job:</h3>
+                {
+                    profile.lookingForAJob ? 'Yes' : 'No'
+                }
+                <p>{ profile.lookingForAJobDescription }</p>
+            </div>
+        </div>
+    )
+}
+
+const SocialLinks = ({title, value}) => {
+    return (
+        <div>
+            <b>{ title }:</b><span>{ value }</span>
         </div>
     )
 }
