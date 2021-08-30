@@ -18,6 +18,7 @@ class SettingsContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         appTheme: state.settingsPage.themeDark,
+        profile: state.profilePage.profile
     }
 }
 

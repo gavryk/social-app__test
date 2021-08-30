@@ -70,9 +70,9 @@ const ProfileInfo = ({saveAvatar, ...props}) => {
                             }
                         </ul>
                         <h3>Looking For A Job:</h3>
-                        {/*{*/}
-                        {/*    props.profile.lookingForAJob ? 'Yes' : 'No'*/}
-                        {/*}*/}
+                        {
+                            props.profile.lookingForAJob ? 'Yes' : 'No'
+                        }
                         <p>{ props.profile.lookingForAJobDescription }</p>
                     </div>
                 </div>
