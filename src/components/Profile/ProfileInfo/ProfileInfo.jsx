@@ -1,13 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import './ProfileInfo.scss'
 import userAvatar from "../../../assets/img/user-avatar.png";
 import ProfileStatus from './ProfileStatus'
 import Loader from "../../common/Loader/Loader";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCamera} from "@fortawesome/free-solid-svg-icons";
+import ProfileDataForm from "./ProfileDataForm";
 
 
 const ProfileInfo = ({saveAvatar, ...props}) => {
+    const [editProfileMode, setEditProfileMode] = useState(false);
+
     let default_img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT2cGUqGnCYT6DxUTYNd8hqbRLcDCZ9c6TsEw&usqp=CAU'
     if (!props.profile) {
         return <Loader/>
@@ -17,6 +20,10 @@ const ProfileInfo = ({saveAvatar, ...props}) => {
         if (e.target.files.length) {
             saveAvatar(e.target.files[0]);
         }
+    }
+
+    const editModeHandler = () => {
+        setEditProfileMode(!editProfileMode);
     }
 
     return (
@@ -48,13 +55,13 @@ const ProfileInfo = ({saveAvatar, ...props}) => {
 
                 <ProfileStatus status={props.status} updateStatus={ props.updateStatus } />
 
-                <ProfileData profile={ props.profile }/>
+                { editProfileMode ? <ProfileDataForm profile={ props.profile } /> : <ProfileData editModeHandler={ editModeHandler } isOwner={ props.isOwner } profile={ props.profile }/> }
             </div>
         </div>
     )
 }
 
-const ProfileData = ({ profile }) => {
+const ProfileData = ({ profile, isOwner, editModeHandler }) => {
     return (
         <div className="profile-full-info text-start">
             <h2>About Me:</h2>
@@ -74,6 +81,7 @@ const ProfileData = ({ profile }) => {
                 }
                 <p>{ profile.lookingForAJobDescription }</p>
             </div>
+            { isOwner && <button className='button' onClick={ editModeHandler }>Edit</button> }
         </div>
     )
 }

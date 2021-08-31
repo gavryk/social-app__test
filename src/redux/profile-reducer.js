@@ -125,6 +125,7 @@ export const getStatus = (userId) => {
         dispatch(setStatus(response.data));
     }
 }
+
 export const updateStatus = (status) => {
     return async (dispatch) => {
         let response = await profileAPI.updateStatus(status);
