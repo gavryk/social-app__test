@@ -81,7 +81,7 @@ const ProfileData = ({ profile, isOwner, editModeHandler }) => {
                 }
                 <p>{ profile.lookingForAJobDescription }</p>
             </div>
-            { isOwner && <button className='button' onClick={ editModeHandler }>Edit</button> }
+            { isOwner && <div className='edit-btn text-center'><button className='btn btn-warning w-25' onClick={ editModeHandler }>Edit</button></div>}
         </div>
     )
 }
