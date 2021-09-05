@@ -26,6 +26,10 @@ const ProfileInfo = ({saveAvatar, ...props}) => {
         setEditProfileMode(!editProfileMode);
     }
 
+    const onSubmit = (formData) => {
+        console.log(formData);
+    }
+
     return (
         <div>
             <div className="profile-top-bg" style={{backgroundImage: `url(${default_img})`} }>
@@ -55,7 +59,7 @@ const ProfileInfo = ({saveAvatar, ...props}) => {
 
                 <ProfileStatus status={props.status} updateStatus={ props.updateStatus } />
 
-                { editProfileMode ? <ProfileDataForm profile={ props.profile } /> : <ProfileData editModeHandler={ editModeHandler } isOwner={ props.isOwner } profile={ props.profile }/> }
+                { editProfileMode ? <ProfileDataForm profile={ props.profile } onSubmit={onSubmit} /> : <ProfileData editModeHandler={ editModeHandler } isOwner={ props.isOwner } profile={ props.profile }/> }
             </div>
         </div>
     )

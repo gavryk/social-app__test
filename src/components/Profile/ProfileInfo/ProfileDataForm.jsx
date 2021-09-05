@@ -1,16 +1,8 @@
 import React from "react";
-import {Input} from "../../common/FormControls/FormControls";
+import {CheckBox, Input, TextArea} from "../../common/FormControls/FormControls";
 import {Field, reduxForm} from "redux-form";
 
-const ProfileDataForm = ({ profile }) => {
-    return (
-        <div className="profile-full-info text-start">
-            <AddNewData onSubmit={() => {  }}/>
-        </div>
-    )
-}
-
-const MyProfileData = (props) => {
+const DataForm = (props) => {
     return (
         <form onSubmit={ props.handleSubmit } className="post-input">
             <button className='btn btn-success'>Save</button>
@@ -26,10 +18,24 @@ const MyProfileData = (props) => {
                 placeholder='Change About Me'
                 className='form-control form-control-lg h-25 mb-3'
                 id='changeAbout' />
+            <Field
+                component={ CheckBox }
+                type='checkbox'
+                name='newLookingForAJob'
+                placeholder='Looking For A Job'
+                className='form-check-input'
+                id='changeLookingJob' />
+            <Field
+                component={ TextArea }
+                name='newSkills'
+                placeholder='Change Skills'
+                className='form-control form-control-lg h-25 mb-3'
+                id='changeSkills' />
         </form>
     )
 }
 
-const AddNewData = reduxForm({form: 'add-profile-data'})(MyProfileData);
+const ProfileDataForm = reduxForm({form: 'add-profile-data'})(DataForm);
+
 
 export default ProfileDataForm;
