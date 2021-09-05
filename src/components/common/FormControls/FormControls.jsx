@@ -6,7 +6,7 @@ export const TextArea = ({input, meta, placeholder, id, className}) => {
     const hasError = meta.error && meta.touched;
 
     return (
-        <div className='form-floating'>
+        <div className={`form-floating ${ style.formWrapper }`}>
             <textarea
                 placeholder={ placeholder }
                 id={ id }
@@ -26,7 +26,7 @@ export const Input = ({input, meta, placeholder, id, className, type}) => {
     const hasError = meta.error && meta.touched;
 
     return (
-        <div className="form-floating">
+        <div className={`form-floating ${ style.formWrapper }`}>
             <input
                 {...input}
                 placeholder={ placeholder }

@@ -2,7 +2,7 @@
 .formWrapper {
   height: calc(100% - 70px);
   .label {
-    color: #000;
+    color: #000 !important;
     font-weight: 700;
   }
 
@@ -10,3 +10,4 @@
     border-bottom: 1px solid red;
   }
 }
+
