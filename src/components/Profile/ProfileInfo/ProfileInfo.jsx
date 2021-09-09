@@ -68,23 +68,31 @@ const ProfileInfo = ({saveAvatar, saveProfile, ...props}) => {
 const ProfileData = ({ profile, isOwner, editModeHandler }) => {
     return (
         <div className="profile-full-info text-start">
-            <h2>About Me:</h2>
             <div className="info">
-                <p>{ profile.aboutMe }</p>
-                <h3>Looking For A Job:</h3>
-                {
-                    profile.lookingForAJob ? 'Yes' : 'No'
-                }
-                <h3>Skills</h3>
-                <p>{ profile.lookingForAJobDescription }</p>
-                <h3>Contacts:</h3>
-                <ul className='soc-links'>
+                <div className="info-item">
+                    <h2>About Me:</h2>
+                    <p>{ profile.aboutMe }</p>
+                </div>
+                <div className="info-item">
+                    <h3>Looking For A Job:</h3>
                     {
-                        Object.keys(profile.contacts).map(key => {
-                            return <SocialLinks key={ key } title={ key } value={ profile.contacts[key] }/>
-                        })
+                        profile.lookingForAJob ? 'Yes' : 'No'
                     }
-                </ul>
+                </div>
+                <div className="info-item">
+                    <h3>Skills</h3>
+                    <p>{ profile.lookingForAJobDescription }</p>
+                </div>
+                <div className="info-item">
+                    <h3>Contacts:</h3>
+                    <ul className='soc-links'>
+                        {
+                            Object.keys(profile.contacts).map(key => {
+                                return key ? <SocialLinks key={ key } title={ key } value={ profile.contacts[key] }/> : ''
+                            })
+                        }
+                    </ul>
+                </div>
             </div>
             { isOwner && <div className='edit-btn text-center'><button className='btn btn-warning w-25' onClick={ editModeHandler }>Edit</button></div>}
         </div>

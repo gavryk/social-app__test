@@ -13,7 +13,7 @@ const User = ({ id, photos, name, status, followed, ...props }) => {
                 <h5 className="card-title">{ name }</h5>
                 <p className="card-text">{ status }</p>
                 <button
-                    disabled={props.followingInProgress.some(id => id === id)}
+                    disabled={props.followingInProgress.some(follId => follId === id)}
                     onClick={() => {
                         !followed
                             ? props.followThunk(id)

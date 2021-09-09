@@ -1,9 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import style from './Settings.module.scss'
-import userAvatar from "../../assets/img/user-avatar.png";
 
 const Settings = ({ saveAvatar, ...props }) => {
-    console.log(props)
     const onUserPhoto = (e) => {
        if (e.target.files.length) {
            saveAvatar(e.target.files[0]);
