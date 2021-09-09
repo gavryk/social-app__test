@@ -8,7 +8,7 @@ import {faCamera} from "@fortawesome/free-solid-svg-icons";
 import ProfileDataForm from "./ProfileDataForm";
 
 
-const ProfileInfo = ({saveAvatar, ...props}) => {
+const ProfileInfo = ({saveAvatar, saveProfile, ...props}) => {
     const [editProfileMode, setEditProfileMode] = useState(false);
 
     let default_img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT2cGUqGnCYT6DxUTYNd8hqbRLcDCZ9c6TsEw&usqp=CAU'
@@ -27,7 +27,7 @@ const ProfileInfo = ({saveAvatar, ...props}) => {
     }
 
     const onSubmit = (formData) => {
-        console.log(formData);
+        saveProfile(formData);
     }
 
     return (

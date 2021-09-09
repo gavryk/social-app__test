@@ -2,32 +2,32 @@ import React from "react";
 import {CheckBox, Input, TextArea} from "../../common/FormControls/FormControls";
 import {Field, reduxForm} from "redux-form";
 
-const DataForm = (props) => {
+const DataForm = ({handleSubmit, profile}) => {
     return (
-        <form onSubmit={ props.handleSubmit } className="post-input">
+        <form onSubmit={ handleSubmit } className="post-input">
             <button className='btn btn-success'>Save</button>
             <Field
                 component={ Input }
-                name='newName'
+                name='fullName'
                 placeholder='Change Name'
                 className='form-control form-control-lg h-25 mb-3'
                 id='changeName' />
             <Field
                 component={ Input }
-                name='newAbout'
+                name='aboutMe'
                 placeholder='Change About Me'
                 className='form-control form-control-lg h-25 mb-3'
                 id='changeAbout' />
             <Field
                 component={ CheckBox }
                 type='checkbox'
-                name='newLookingForAJob'
+                name='lookingForAJob'
                 placeholder='Looking For A Job'
                 className='form-check-input'
                 id='changeLookingJob' />
             <Field
                 component={ TextArea }
-                name='newSkills'
+                name='lookingForAJobDescription'
                 placeholder='Change Skills'
                 className='form-control form-control-lg h-25 mb-3'
                 id='changeSkills' />

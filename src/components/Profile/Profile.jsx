@@ -3,11 +3,11 @@ import './Profile.scss'
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-const Profile = ({ profile, status, updateStatus, isOwner, saveAvatar }) => {
+const Profile = ({ profile, status, updateStatus, isOwner, saveAvatar, saveProfile }) => {
 
     return(
         <div className='profile__block'>
-            <ProfileInfo isOwner={isOwner} saveAvatar={ saveAvatar } profile={ profile } status={ status } updateStatus={ updateStatus }/>
+            <ProfileInfo saveProfile={saveProfile} isOwner={isOwner} saveAvatar={ saveAvatar } profile={ profile } status={ status } updateStatus={ updateStatus }/>
             <MyPostsContainer />
         </div>
     )
