@@ -71,6 +71,12 @@ const ProfileData = ({ profile, isOwner, editModeHandler }) => {
             <h2>About Me:</h2>
             <div className="info">
                 <p>{ profile.aboutMe }</p>
+                <h3>Looking For A Job:</h3>
+                {
+                    profile.lookingForAJob ? 'Yes' : 'No'
+                }
+                <h3>Skills</h3>
+                <p>{ profile.lookingForAJobDescription }</p>
                 <h3>Contacts:</h3>
                 <ul className='soc-links'>
                     {
@@ -79,11 +85,6 @@ const ProfileData = ({ profile, isOwner, editModeHandler }) => {
                         })
                     }
                 </ul>
-                <h3>Looking For A Job:</h3>
-                {
-                    profile.lookingForAJob ? 'Yes' : 'No'
-                }
-                <p>{ profile.lookingForAJobDescription }</p>
             </div>
             { isOwner && <div className='edit-btn text-center'><button className='btn btn-warning w-25' onClick={ editModeHandler }>Edit</button></div>}
         </div>
