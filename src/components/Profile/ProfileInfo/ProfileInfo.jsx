@@ -69,22 +69,22 @@ const ProfileData = ({ profile, isOwner, editModeHandler }) => {
     return (
         <div className="profile-full-info text-start">
             <div className="info">
-                <div className="info-item">
-                    <h2>About Me:</h2>
-                    <p>{ profile.aboutMe }</p>
+                <div className="info-item mb-3">
+                    <h3>{ profile.aboutMe !== null ? 'About Me:' : ''}</h3>
+                    <p className='mb-0'>{ profile.aboutMe }</p>
                 </div>
-                <div className="info-item">
-                    <h3>Looking For A Job:</h3>
+                <div className="info-item mb-3">
+                    <h3>{ profile.lookingForAJob !== null ? 'Looking For A Job:' : ''}</h3>
                     {
                         profile.lookingForAJob ? 'Yes' : 'No'
                     }
                 </div>
-                <div className="info-item">
-                    <h3>Skills</h3>
-                    <p>{ profile.lookingForAJobDescription }</p>
+                <div className="info-item mb-3">
+                    <h3>{ profile.lookingForAJobDescription !== null ? 'Skills:' : ''}</h3>
+                    <p className='mb-0'>{ profile.lookingForAJobDescription }</p>
                 </div>
-                <div className="info-item">
-                    <h3>Contacts:</h3>
+                <div className="info-item mb-3">
+                    <h3>{ Object.keys(profile.contacts).every((key) => !profile.contacts[key]) ? '' : 'Contacts:'}</h3>
                     <ul className='soc-links'>
                         {
                             Object.keys(profile.contacts).map(key => {
@@ -102,7 +102,7 @@ const ProfileData = ({ profile, isOwner, editModeHandler }) => {
 const SocialLinks = ({title, value}) => {
     return (
         <div>
-            <b>{ title }:</b><span>{ value }</span>
+            <b>{ value ? `${ title }: ` : '' }</b> <a href={ value }>{ value ? value : '' }</a>
         </div>
     )
 }

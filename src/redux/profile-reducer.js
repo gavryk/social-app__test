@@ -112,7 +112,6 @@ export const getProfile = (userId) => {
     return async (dispatch) => {
         dispatch(setFetching(true));
         let response = await userAPI.getProfile(userId);
-        console.log(response.data)
         dispatch(setFetching(false));
         dispatch(setUserProfile(response.data));
     }

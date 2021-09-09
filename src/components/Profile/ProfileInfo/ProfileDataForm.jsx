@@ -4,8 +4,7 @@ import {Field, reduxForm} from "redux-form";
 
 const DataForm = ({handleSubmit, profile}) => {
     return (
-        <form onSubmit={ handleSubmit } className="post-input">
-            <button className='btn btn-success'>Save</button>
+        <form onSubmit={ handleSubmit } className="post-input text-start">
             <Field
                 component={ Input }
                 name='fullName'
@@ -31,6 +30,7 @@ const DataForm = ({handleSubmit, profile}) => {
                 placeholder='Change Skills'
                 className='form-control form-control-lg h-25 mb-3'
                 id='changeSkills' />
+            <button className='btn btn-success'>Save</button>
         </form>
     )
 }
