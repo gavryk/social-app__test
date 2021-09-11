@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 
 
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, error, captcha }) => {
     return (
         <div className={`${style.formWrapper} d-flex justify-content-center align-items-center`}>
             <form onSubmit={ handleSubmit } className='w-50'>
@@ -17,6 +17,9 @@ const LoginForm = ({ handleSubmit, error }) => {
                 <Field component={ CheckBox } type={"checkbox"} name={'remember'} className="form-check-input" id="exampleCheck1" placeholder="Remember Me"/>
 
                 { error && <h4 className={`${style.dangerMsg} text-danger p-1 mt-3 mb-3`}> { error }</h4> }
+
+                { captcha && <img className={style.captchaImg} src={ captcha } alt='captcha'/> }
+                { captcha && <Field validate={[requiredField]} component={ Input } className='form-control mb-3' name='captcha' type='text' placeholder='Symbols from Image' id="exampleInputCaptcha" /> }
 
                 <div className='text-center'>
                     <button type="submit" className="btn btn-success text-center">Login</button>
@@ -28,22 +31,23 @@ const LoginForm = ({ handleSubmit, error }) => {
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
-const Login = ({ login, isAuth }) => {
+const Login = ({ login, isAuth, captchaUrl }) => {
     const onSubmit = (formData) => {
-        login(formData.email, formData.password, formData.rememberMe);
+        login(formData.email, formData.password, formData.rememberMe, formData.captcha);
     }
 
     return isAuth
         ? <Redirect to={'/profile'}/>
         : <div>
             <h1 className='title pb-2 border-bottom'>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm captcha={ captchaUrl } onSubmit={onSubmit}/>
         </div>
 }
 
 const mapStateToProps = (state) => {
     return {
         isAuth: state.auth.isAuth,
+        captchaUrl: state.auth.captchaUrl,
     }
 }
 
