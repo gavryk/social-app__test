@@ -146,11 +146,12 @@ export const saveAvatar = (file) => {
 }
 
 export const saveProfile = (profile) => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
+        const id = getState().auth.userId;
         let response = await profileAPI.saveProfile(profile);
 
         if(response.data.resultCode === 0) {
-            // dispatch(saveProfile(response.data.data));
+            dispatch(getProfile(id));
         }
     }
 }

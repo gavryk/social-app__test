@@ -28,6 +28,7 @@ const ProfileInfo = ({saveAvatar, saveProfile, ...props}) => {
 
     const onSubmit = (formData) => {
         saveProfile(formData);
+        setEditProfileMode(!editProfileMode);
     }
 
     return (
@@ -59,7 +60,7 @@ const ProfileInfo = ({saveAvatar, saveProfile, ...props}) => {
 
                 <ProfileStatus status={props.status} updateStatus={ props.updateStatus } />
 
-                { editProfileMode ? <ProfileDataForm profile={ props.profile } onSubmit={onSubmit} /> : <ProfileData editModeHandler={ editModeHandler } isOwner={ props.isOwner } profile={ props.profile }/> }
+                { editProfileMode ? <ProfileDataForm initialValues={ props.profile } onSubmit={onSubmit} /> : <ProfileData editModeHandler={ editModeHandler } isOwner={ props.isOwner } profile={ props.profile }/> }
             </div>
         </div>
     )

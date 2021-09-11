@@ -33,6 +33,7 @@ export const setUserData = (userId, email, login, isAuth) => {
 export const getAuth = () => {
     return async (dispatch) => {
         let response = await authAPI.me();
+        console.log(response)
         if (response.data.resultCode === 0) {
             let { id, email, login } = response.data.data;
             dispatch(setUserData(id, email, login, true));

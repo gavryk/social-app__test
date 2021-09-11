@@ -2,7 +2,7 @@ import React from "react";
 import {CheckBox, Input, TextArea} from "../../common/FormControls/FormControls";
 import {Field, reduxForm} from "redux-form";
 
-const DataForm = ({handleSubmit, profile}) => {
+const DataForm = ({handleSubmit}) => {
     return (
         <form onSubmit={ handleSubmit } className="post-input text-start">
             <Field
