@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
     return(
-        <header className='navbar mb-3 p-3 col-12 shadow rounded'>
+        <header className='navbar mb-3 p-3 col-12 shadow'>
             <a href="/" className='logo'>
                 <img src={ props.appTheme ? logo2 : logo } alt=""/>
             </a>

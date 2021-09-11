@@ -8,6 +8,8 @@
   height: calc(100vh - 88px);
   overflow-y: scroll;
   overflow-x: hidden;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   .menu-navigation {
     li {
       list-style: none;

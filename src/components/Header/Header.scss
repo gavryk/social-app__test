@@ -3,6 +3,8 @@
 header {
   padding: 10px;
   background: $color;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   .logo img {
     max-width: 100px;
   }

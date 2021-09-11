@@ -4,7 +4,7 @@ import userAvatar from "../../../assets/img/user-avatar.png";
 import ProfileStatus from './ProfileStatus'
 import Loader from "../../common/Loader/Loader";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCamera} from "@fortawesome/free-solid-svg-icons";
+import {faCamera, faPen} from "@fortawesome/free-solid-svg-icons";
 import ProfileDataForm from "./ProfileDataForm";
 
 
@@ -74,6 +74,14 @@ const ProfileInfo = ({saveAvatar, saveProfile, ...props}) => {
 const ProfileData = ({ profile, isOwner, editModeHandler }) => {
     return (
         <div className="profile-full-info text-start">
+            { isOwner
+            && <div className='edit-btn text-center pe-3'>
+                <button className='btn btn-secondary w-15 lh-1' onClick={ editModeHandler }>
+                    <FontAwesomeIcon icon={faPen} />
+                    Edit Profile
+                </button>
+            </div>
+            }
             <div className="info">
                 <div className="info-item mb-3">
                     <h3>{ profile.aboutMe !== null ? 'About Me:' : ''}</h3>
@@ -100,7 +108,6 @@ const ProfileData = ({ profile, isOwner, editModeHandler }) => {
                     </ul>
                 </div>
             </div>
-            { isOwner && <div className='edit-btn text-center'><button className='btn btn-warning w-15 lh-1' onClick={ editModeHandler }>Edit</button></div>}
         </div>
     )
 }
