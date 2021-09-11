@@ -2,7 +2,7 @@ import React from "react";
 import {CheckBox, Input, TextArea} from "../../common/FormControls/FormControls";
 import {Field, reduxForm} from "redux-form";
 
-const DataForm = ({handleSubmit}) => {
+const DataForm = ({handleSubmit, profile}) => {
     return (
         <form onSubmit={ handleSubmit } className="post-input text-start">
             <Field
@@ -30,6 +30,18 @@ const DataForm = ({handleSubmit}) => {
                 placeholder='Change Skills'
                 className='form-control form-control-lg h-25 mb-3'
                 id='changeSkills' />
+            <ul className='soc-links'>
+                {
+                    Object.keys(profile.contacts).map((key, index) => {
+                        return <div className='contacts'><b>{ key }: { <Field component={ Input }
+                                                                              name={'contacts.' + key}
+                                                                              placeholder={key}
+                                                                              className='form-control form-control-lg h-25 mb-3'
+                                                                              id={`contactsField-${ index++ }`}/> }</b></div>
+                    })
+                }
+            </ul>
+
             <button className='btn btn-success'>Save</button>
         </form>
     )
