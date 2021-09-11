@@ -27,8 +27,9 @@ const ProfileInfo = ({saveAvatar, saveProfile, ...props}) => {
     }
 
     const onSubmit = (formData) => {
-        saveProfile(formData);
-        setEditProfileMode(!editProfileMode);
+        saveProfile(formData).then(() => {
+            setEditProfileMode(!editProfileMode);
+        })
     }
 
     return (
@@ -99,7 +100,7 @@ const ProfileData = ({ profile, isOwner, editModeHandler }) => {
                     </ul>
                 </div>
             </div>
-            { isOwner && <div className='edit-btn text-center'><button className='btn btn-warning w-25' onClick={ editModeHandler }>Edit</button></div>}
+            { isOwner && <div className='edit-btn text-center'><button className='btn btn-warning w-15 lh-1' onClick={ editModeHandler }>Edit</button></div>}
         </div>
     )
 }
