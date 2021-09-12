@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import './App.scss';
-import {BrowserRouter, Route, Switch, withRouter} from 'react-router-dom'
+import {BrowserRouter, Redirect, Route, Switch, withRouter} from 'react-router-dom'
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -11,9 +11,10 @@ import {connect, Provider} from "react-redux";
 import News from "./components/News/News";
 import Login from "./components/Login/Login";
 import {compose} from "redux";
-import {initializeApp} from "./redux/app-reducer";
+import {catchError, initializeApp} from "./redux/app-reducer";
 import Loader from "./components/common/Loader/Loader";
 import store from "./redux/store";
+import Toast from "./components/Toast/Toast";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const MusicContainer = React.lazy(() => import('./components/Music/MusicContainer'));
@@ -21,8 +22,18 @@ const MusicContainer = React.lazy(() => import('./components/Music/MusicContaine
 
 
 class App extends React.Component {
+
+    catchAllUnhandledErrors = (event) => {
+        this.props.catchError(event.reason);
+    }
+
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors)
     }
 
     render() {
@@ -37,6 +48,9 @@ class App extends React.Component {
                             <NavbarContainer/>
                             <div className="main-content shadow rounded">
                                 <Switch>
+                                    <Route exact path="/">
+                                        <Redirect to="/profile" />
+                                    </Route>
                                     <Route path='/profile/:userId?'>
                                         <ProfileContainer/>
                                     </Route>
@@ -65,10 +79,21 @@ class App extends React.Component {
                                     <Route path='/login'>
                                         <Login/>
                                     </Route>
+                                    <Route path='*'>
+                                        <div className='not-found-page d-flex justify-content-center align-items-center'>
+                                            <h1 className='text-center'>Error 404 <br/> Page Not Found</h1>
+                                        </div>
+                                    </Route>
                                 </Switch>
                             </div>
                         </div>
                     </div>
+
+                    {
+                        this.props.globalError !== null
+                            ? <Toast catchError={ this.props.catchError } error={this.props.globalError.message}/>
+                            : ''
+                    }
                 </div>
             )
         }
@@ -78,13 +103,14 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
     return {
         appTheme: state.settingsPage.themeDark,
-        initialized: state.app.initialized
+        initialized: state.app.initialized,
+        globalError: state.app.globalError
     }
 }
 
 let AppContainer = compose(
     withRouter,
-    connect(mapStateToProps, { initializeApp }))(App);
+    connect(mapStateToProps, { initializeApp, catchError }))(App);
 
 const MainApp = (props) => {
     return (
