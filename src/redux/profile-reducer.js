@@ -1,5 +1,6 @@
 import {profileAPI, userAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+import {catchError} from "./app-reducer";
 
 const ADD_POST = 'ADD_POST',
     SET_USER_PROFILE = 'SET_USER_PROFILE',

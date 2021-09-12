@@ -75,7 +75,7 @@ const ProfileData = ({ profile, isOwner, editModeHandler }) => {
     return (
         <div className="profile-full-info text-start">
             { isOwner
-            && <div className='edit-btn text-center pe-3'>
+            && <div className='edit-btn text-center'>
                 <button className='btn btn-secondary w-15 lh-1' onClick={ editModeHandler }>
                     <FontAwesomeIcon icon={faPen} />
                     Edit Profile

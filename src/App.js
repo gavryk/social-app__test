@@ -11,7 +11,7 @@ import {connect, Provider} from "react-redux";
 import News from "./components/News/News";
 import Login from "./components/Login/Login";
 import {compose} from "redux";
-import {catchError, initializeApp} from "./redux/app-reducer";
+import {catchErrorThunk, initializeApp} from "./redux/app-reducer";
 import Loader from "./components/common/Loader/Loader";
 import store from "./redux/store";
 import Toast from "./components/Toast/Toast";
@@ -24,7 +24,7 @@ const MusicContainer = React.lazy(() => import('./components/Music/MusicContaine
 class App extends React.Component {
 
     catchAllUnhandledErrors = (event) => {
-        this.props.catchError(event.reason);
+        this.props.catchErrorThunk(event.reason);
     }
 
     componentDidMount() {
@@ -91,8 +91,7 @@ class App extends React.Component {
 
                     {
                         this.props.globalError !== null
-                            ? <Toast catchError={ this.props.catchError } error={this.props.globalError.message}/>
-                            : ''
+                            && <Toast catchError={ this.props.catchError } error={this.props.globalError}/>
                     }
                 </div>
             )
@@ -110,7 +109,7 @@ const mapStateToProps = (state) => {
 
 let AppContainer = compose(
     withRouter,
-    connect(mapStateToProps, { initializeApp, catchError }))(App);
+    connect(mapStateToProps, { initializeApp, catchErrorThunk }))(App);
 
 const MainApp = (props) => {
     return (

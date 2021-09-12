@@ -47,5 +47,11 @@ export const initializeApp = () => {
     }
 }
 
+export const catchErrorThunk = (err) => {
+    return (dispatch) => {
+        dispatch(catchError(err));
+    }
+}
+
 
 export default appReducer;
