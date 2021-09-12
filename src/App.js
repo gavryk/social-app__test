@@ -91,7 +91,7 @@ class App extends React.Component {
 
                     {
                         this.props.globalError !== null
-                            && <Toast catchError={ this.props.catchError } error={this.props.globalError}/>
+                            && <Toast catchErrorThunk={ this.props.catchErrorThunk } error={this.props.globalError}/>
                     }
                 </div>
             )

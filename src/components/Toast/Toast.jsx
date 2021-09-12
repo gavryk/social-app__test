@@ -1,13 +1,12 @@
 import React, { useState} from "react";
 
-const Toast = ({ error, catchError }) => {
+const Toast = ({ error, catchErrorThunk }) => {
     const [show, setShow] = useState(true);
 
-    console.log(error);
 
     const closeToast = () => {
         setShow(false);
-        catchError(null);
+        catchErrorThunk(null);
     }
 
     return (
