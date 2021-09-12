@@ -7,8 +7,8 @@ const Friends = ({totalUserCount, pageSize, currentPage, onChangedFrPage, ...pro
     let state = props.friends;
 
     let friends = state.map(friend => {
-        return <div key={friend.id} className='friend col-3'>
-            <Friend friendName={ friend.name } key={ friend.id } avatar={ friend.photos.large }/>
+        return <div key={friend.id} className='friend col-4 p-3'>
+            <Friend friendName={ friend.name } key={ friend.id } id={friend.id} avatar={ friend.photos.large }/>
         </div>
     })
     return (

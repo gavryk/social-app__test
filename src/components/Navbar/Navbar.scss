@@ -62,10 +62,24 @@
     color: #fff;
     .friend {
       list-style: none;
-      .user-avatar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      a {
+        display: block;
+        flex-basis: 30px;
         max-width: 30px;
-        max-height: 30px;
         border-radius: 50%;
+        overflow: hidden;
+        img {
+          padding: 0;
+          border: none;
+        }
+      }
+      span {
+        flex: 1;
+        margin-left: 10px;
       }
     }
   }
