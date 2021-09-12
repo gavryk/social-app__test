@@ -9,6 +9,15 @@ const Friends = ({totalUserCount, pageSize, currentPage, onChangedFrPage, ...pro
     let friends = state.map(friend => {
         return <div key={friend.id} className='friend col-4 p-3'>
             <Friend friendName={ friend.name } key={ friend.id } id={friend.id} avatar={ friend.photos.large }/>
+            <button onClick={() => {
+                    !friend.followed
+                        ? props.followThunk(friend.id)
+                        : props.unFollowThunk(friend.id)
+                }}
+                className={`btn ${!friend.followed ? 'btn-success' : 'btn-danger'}`}
+            >
+                {!friend.followed ? 'Follow' : 'Unfollow'}
+            </button>
         </div>
     })
     return (

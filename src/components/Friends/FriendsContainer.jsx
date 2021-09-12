@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import Friends from "./Friends";
 import {getFriends, setFriends, setFriendsPage} from "../../redux/friends-reducer";
+import {followThunk, unFollowThunk} from "../../redux/users-reducer";
 
 class FriendsContainer extends React.Component {
 
@@ -21,6 +22,8 @@ class FriendsContainer extends React.Component {
                totalUserCount={this.props.totalUserCount}
                currentPage={this.props.currentPage}
                onChangedFrPage={ this.onChangedFrPage }
+               followThunk={ this.props.followThunk }
+               unFollowThunk={this.props.unFollowThunk}
            />
         )
     }
@@ -39,5 +42,7 @@ let mapStateToProps = ( state ) => {
 export default connect(mapStateToProps, {
     setFriends,
     getFriends,
+    unFollowThunk,
+    followThunk,
     setFriendsPage
 })(FriendsContainer)
