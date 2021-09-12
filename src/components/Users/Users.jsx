@@ -7,7 +7,7 @@ import User from "./User/User";
 import Loader from "../common/Loader/Loader";
 
 const Users = ({ totalUserCount, pageSize, onChangedPage, currentPage, ...props }) => {
-    //Search Product Hook
+    //Search Users Hook
     let [searchValue, setSearchValue] = React.useState('');
 
     const changeValue = (event) => {
