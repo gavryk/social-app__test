@@ -1,8 +1,7 @@
-import React, {useEffect} from "react";
+import React from "react";
 import './Navbar.scss'
 import { NavLink } from "react-router-dom";
 import Friend from "../Friends/Friend/Friend";
-import {getFriends} from "../../redux/friends-reducer";
 
 const Navbar = (props) => {
     let state = props.friends;

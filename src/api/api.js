@@ -99,5 +99,7 @@ export const getMusic = (radioId = 6, searchArtist) => {
             'x-rapidapi-key': 'e190ea7db0msha70ac2b007e086dp1fc146jsna246d532874c',
             'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com'
         }
-    }).then(response => response.data)
+    }).then(response => response.data).catch((err) => {
+        console.log(err);
+    })
 }

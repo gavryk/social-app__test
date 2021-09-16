@@ -1,22 +1,18 @@
 import {connect} from "react-redux";
 import Navbar from "./Navbar";
-import React, {useEffect} from "react";
+import React from "react";
 import {compose} from "redux";
 import {getFriends} from "../../redux/friends-reducer";
 
 
-const NavbarContainer = (props) => {
-    // componentDidMount() {
-    //     this.props.getFriends(this.props.currentPage, this.props.pageSize);
-    // }
+class NavbarContainer extends React.Component {
+    componentDidMount() {
+        this.props.getFriends(this.props.currentPage, this.props.pageSize);
+    }
 
-    useEffect(() => {
-        props.getFriends(props.currentPage, props.pageSize);
-    }, [props.friends])
-
-    return (
-        <Navbar friends={ props.friends }/>
-    )
+    render() {
+        return <Navbar friends={ this.props.friends }/>
+    }
 }
 
 let mapStateToProps = (state) => {

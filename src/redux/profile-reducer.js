@@ -1,13 +1,12 @@
 import {profileAPI, userAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
-import {catchError} from "./app-reducer";
 
 const ADD_POST = 'ADD_POST',
-    SET_USER_PROFILE = 'SET_USER_PROFILE',
-    SET_FETCHING = 'SET_FETCHING',
-    SET_STATUS = 'SET_STATUS',
-    DELETE_POST = 'DELETE_POST',
-    SET_PHOTO = 'SET_PHOTO';
+      SET_USER_PROFILE = 'SET_USER_PROFILE',
+      SET_FETCHING = 'SET_FETCHING',
+      SET_STATUS = 'SET_STATUS',
+      DELETE_POST = 'DELETE_POST',
+      SET_PHOTO = 'SET_PHOTO';
 
 let initialState = {
     posts: [
